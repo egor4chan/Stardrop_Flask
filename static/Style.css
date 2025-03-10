@@ -484,6 +484,29 @@ span#pricecase {
     box-shadow: 0px 0px 0px rgb(248, 247, 247);
 }
 
+#goToCase1 {
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
+    height: 40px;
+    width: 100px;
+
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(12, 12, 14);
+    border-bottom: 3px solid rgb(9, 9, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0px 0px 0px rgb(248, 247, 247);
+}
+
 #banner {
     position: absolute;
     width: 45%;
@@ -1000,8 +1023,9 @@ body {
     left: 5%;
     height: 160px;
     position: relative;
-    background-color: rgb(255, 196, 0);
-    border-bottom: 3px solid rgb(172, 107, 10);
+    background-color: rgb(15, 15, 17);
+    color: rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(12, 12, 11);
     top: 140px;
     border-radius: 10px;
 }
@@ -1032,8 +1056,10 @@ body {
     padding: 0px 40px;
     outline: none;
     border: none;
-    background-color: rgb(15, 15, 17);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(192, 190, 190);
+    color: rgb(0, 0, 0);
+    font-weight: 700;
 }
 
 .promo > div > button {
