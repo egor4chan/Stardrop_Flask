@@ -8,6 +8,7 @@ TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
 API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
 
 bot = Bot(token=TELEGRAM_TOKEN)
+paid_users = {}
 
 # START
 @app.route('/start')
