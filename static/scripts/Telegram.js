@@ -10,4 +10,7 @@ if (username == undefined) {
     username = `id${WebApp.initDataUnsafe.user.id}`
 }
 
+window.localStorage.setItem('username', username)
+
 document.getElementById('username').innerHTML = username;
+alert(username)
