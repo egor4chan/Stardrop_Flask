@@ -6,6 +6,8 @@ function test() {
     xhr.send();
 
     get_transaction(Number(document.getElementById('dep_count').value))
+
+    generate_payload(Number(document.getElementById('dep_count').value)) // stars
 }
 
 function test_withdraw() {

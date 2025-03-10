@@ -1,6 +1,13 @@
 from flask import Flask, render_template
+from telegram import Bot
+import requests
 
 app = Flask(__name__)
+
+TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
+API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
+
+bot = Bot(token=TELEGRAM_TOKEN)
 
 # START
 @app.route('/start')
@@ -47,6 +54,51 @@ def case_4():
 @app.route('/crash')
 def crash():
     return render_template('crash.html')
+
+# STARS
+def generate_invoice(price):
+    title = "Deposit"
+    description = "Instant stars deposit."
+    payload = "{}"
+    currency = "XTR"  # Telegram Stars
+    prices = [{'label': 'Deposit', 'amount': int(price)}]
+
+    params = {
+        'title': title,
+        'description': description,
+        'payload': payload,
+        'currency': currency,
+        'prices': prices
+    }
+
+    response = requests.post(API_URL + 'createInvoiceLink', json=params)
+    print(response.json())
+
+    if response.status_code == 200:
+        res = response.json()
+        return res["result"]
+    else:
+        return {'error': 'Failed to create invoice'}
+
+@app.route('/generate-invoice<price>', methods=['GET'])
+def generate_invoice_route(price):
+    invoice_data = generate_invoice(price)
+
+    return invoice_data
+
+@app.route('/payment-success', methods=['POST'])
+def payment_success():
+    data = request.json
+    user_id = data.get('user_id')
+    payment_info = data.get('payment_info')
+
+    if user_id and payment_info:
+        paid_users[user_id] = payment_info
+
+        return jsonify({'status': 'success', 'message': 'Payment received!'}), 200
+    else:
+        return jsonify({'status': 'error', 'message': 'Invalid payment data'}), 400
+
 
 
 if __name__ == '__main__':
