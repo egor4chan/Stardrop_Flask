@@ -63,8 +63,12 @@ function spin() {
 
     if (get_user_balance() >= case_price) { // если денег хватает
         send_transaction(case_price)
+        
 
         var win_price = session[1]
+
+        log_opened(case_price-win_price, case_price)
+        
         session = get_filename_winner() // новые данные новая игра
 
         var spinButton = document.getElementById('spin')

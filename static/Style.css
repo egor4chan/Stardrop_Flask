@@ -652,7 +652,8 @@ button.sellall {
     transition: 1s;
     position: fixed;
     width: 90%;
-    height: 400px;
+    height: 230px;
+    
     background-color: rgb(151, 196, 235);
     border-radius: 15px;
     left: 5%;
@@ -798,6 +799,8 @@ button.sellall {
     border: none;
     background-color: rgb(15, 15, 17);
     color: white;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 #deposit-window > input {
@@ -814,6 +817,8 @@ button.sellall {
     border: none;
     background-color: rgb(15, 15, 17);
     color: white;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 #withdraw-window > input.second {

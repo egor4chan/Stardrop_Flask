@@ -62,6 +62,9 @@ function spin() {
         send_transaction(case_price)
 
         var win_price = session[1]
+
+        log_opened(case_price-win_price, case_price)
+
         session = get_filename_winner() // новые данные новая игра
 
 
