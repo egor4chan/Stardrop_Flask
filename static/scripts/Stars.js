@@ -1,7 +1,7 @@
 function generate_payload(price) {
     try {
         const httpRequest = new XMLHttpRequest();
-        httpRequest.open('GET', `https://egor4chan-void-flask-9155.twc1.net/generate-invoice${price}`, true);
+        httpRequest.open('GET', `https://egor4chan-stardrop-flask-ef79.twc1.net/generate-invoice${price}`, true);
     
         httpRequest.onprogress = function () {
           if (httpRequest.status >= 200 && httpRequest.status < 300) {
@@ -11,7 +11,7 @@ function generate_payload(price) {
               
               window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
                 if (status === 'paid') {
-                  alert('Payment successful!');
+                  send_notify('Successful!')
                 } else if (status === 'cancelled') {
                   console.log('payment cancelled')
                 } else {
@@ -34,6 +34,6 @@ function generate_payload(price) {
         httpRequest.send();
       } catch (error) {
         console.error('Error generating invoice:', error);
-        alert('Error generating invoice. Check console for details.');
+        alert('Error generating invoice. Check console');
       }
 }
