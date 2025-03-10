@@ -13,4 +13,3 @@ if (username == undefined) {
 window.localStorage.setItem('username', username)
 
 document.getElementById('username').innerHTML = username;
-alert(username)
