@@ -1,0 +1,1369 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+
+}
+
+
+body {
+    font-family: "Unbounded", monospace;
+
+    background: rgb(12, 12, 14);
+    
+}
+
+.box {
+    position: relative;
+    width: 90%;
+    left: 5%;
+}
+
+div.display {
+    height: 200px;
+    
+    top: 60px;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    padding-bottom: 40px;
+}
+
+div.display > h1 {
+    font-weight: 700;
+    color: white;
+    font-size: 40px;
+}
+
+div.markup {
+    height: 70px;
+    display: flex;
+    top: 40px;
+    justify-content: space-between;
+}
+
+div.markup > div {
+    width: 31%;
+    height: 100%;
+    border-radius: 16px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+div.markup > div > span {
+    position: relative;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+}
+
+h4 {
+    color: rgb(161, 161, 161);
+    text-align: center;
+    font-weight: 400;
+    margin-top: -40px;
+}
+
+div.tools {
+    height: 160px;
+    
+    background-color: rgb(20, 20, 22);
+    border-bottom: 3px solid rgb(14, 14, 15);
+    position: relative;
+    top: 80px;
+    border-radius: 16px;
+}
+
+div.tools > div {
+    width: 90%;
+    height: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 600;
+    color: white;
+    padding-top: 10px;
+}
+
+div.tools > div > .image {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background-color: rgb(12, 12, 14);
+    border-radius: 50%;
+}
+
+div.tools > div > span.name {
+    position: absolute;
+    left: 100px;
+    margin-top: 5px;
+}
+
+div.tools > div > span.income {
+    position: absolute;
+    right: 40px;
+    margin-top: 5px;
+}
+
+.label {
+    position: relative;
+    left: 5%;
+    width: 90%;
+    color: rgb(168, 167, 167);
+}
+
+.stocks {
+    top: 70px;
+}
+
+button.goto {
+    position: relative;
+    top: 90px;
+    height: 56px;
+    border: none;
+    background-color: rgb(20, 20, 22);
+    border-bottom: 3px solid rgb(14, 14, 15);
+    
+    border-radius: 15px;
+    font-family: "Unbounded", monospace;
+    color: grey;
+    cursor: pointer;
+}
+
+.blur {
+    font-size: 120px;
+    position: fixed;
+    font-weight: 900;
+    color: rgb(255, 196, 0);
+    
+    animation: rotate 5s ease-in-out forwards;
+    rotate: 0deg;
+    top: -200px;
+    z-index: -1;
+    transition: 5s;
+}
+
+.blur1 {
+    filter: blur(6px);
+    scale: 1.5;
+}
+
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+        top: -300px
+    }
+    90% {
+        opacity: 1;
+    }
+    to {
+        rotate: 360deg;
+        top: 110%;
+        opacity: 0;
+    }
+}
+
+
+#wheel-window {
+    height: 240px;
+    overflow-x: hidden;
+    position: relative;
+    top: -60px;
+}
+
+#wheel {
+    height: 100%;
+    width: 6000%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    transition: 2s;
+    right: 0%;
+    top: -40px;
+}
+
+#wheel > div {
+    height: 140px;
+    width: 30vw;
+    background-color: rgb(20, 20, 22);
+    margin: 1vw;
+    margin-top: 0;
+    margin-left: 2vw;
+    border-radius: 10px;
+    transition: 1s;
+    box-shadow: 0px 0px 20px rgb(12, 12, 14);
+    text-align: center;
+    overflow: hidden;
+}
+
+#wheel > div > img {
+    position: relative;
+    top: 20px;
+    width: 80%;
+}
+
+#wheel > div > span {
+    position: relative;
+    top: 110px;
+    color: rgb(190, 190, 190);
+}
+
+.logo {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+
+    border-radius: 10px;
+    left: 20px;
+    top: 16px;
+}
+
+.balance {
+    position: absolute;
+    width: 100px auto;
+    padding: 0px 12px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(25, 25, 26);
+    border-radius: 10px;
+    right: 20px;
+    top: 20px;
+}
+
+.plus {
+    position: absolute;
+    width: 100px auto;
+    padding: 0px 12px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(25, 25, 26);
+    border-radius: 10px;
+    right: 200px;
+    top: 20px;
+}
+
+button.spin {
+    transition: 0.4s;
+    height: 60px;
+    width: 90%;
+    left: 5%;
+    position: relative;
+    top: -100px;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#cursor {
+    transition: 0.5s;
+    width: 2px;
+    height: 150px;
+    background-color: rgb(255, 196, 0);
+    position: relative;
+    left: 50%;
+    top: 93px;
+    z-index: 10;
+    border-radius: 1px;
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        right: 0%;
+    }
+
+    to {
+        right: 1881%;
+    }
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 0px 20px rgb(10, 10, 10);
+    z-index: 100;
+    background-color: rgb(12, 12, 14);
+}
+
+nav > div {
+    width: 33%;
+    text-align: center;
+    cursor: pointer;
+}
+
+nav > div:hover > span {
+    color: white;
+}
+
+nav > div > span {
+    color: grey;
+    font-size: 13px;
+    position: relative;
+    top: 30px;
+}
+
+h2 {
+    color: rgb(194, 194, 194);
+    position: relative;
+    top: -60px;
+    left: 5%;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+h5#desc {
+    color: grey;
+    position: relative;
+    top: -50px;
+    left: 5%;
+    width: 90%;
+    font-weight: 500;
+}
+
+div#catalog {
+    height: 440px;
+    width: 90%;
+    left: 5%;
+    position: relative;
+    
+    top: -40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+div#catalog > div {
+    width: 48%;
+    height: 180px;
+    background-color: rgb(21, 21, 24);
+    box-shadow: 0px 0px 20px rgb(12, 12, 12);
+    border-radius: 15px;
+    margin: 1%;
+    text-align: center;
+}
+
+div#catalog > div > img {
+    position: relative;
+    top: 10px;
+    width: 60%;
+}
+
+div#catalog > div > div {
+    z-index: 2;
+    color: white;
+    position: relative;
+    top: 20px;
+    width: 80%;
+    height: 40px;
+    background-color: rgb(12, 12, 14);
+    border-radius: 10px;
+    left: 10%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-weight: 600;
+}
+
+footer {
+    width: 100%;
+    height: 700px;
+}
+
+#button-cont {
+    margin-top: 10px;
+}
+
+#button-cont > button {
+    background-color: rgb(21, 21, 24);
+    border-bottom: 3px solid rgb(12, 12, 14);
+}
+
+/* cases */
+
+.casePepe {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    height: 140px;
+    background-color: rgb(21, 21, 24);
+    top: 80px;
+    border-radius: 12px;
+}
+
+.starsfree {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    height: 140px;
+    background-color: rgb(255, 196, 0);
+    color: black;
+    top: 80px;
+    border-radius: 12px;
+}
+
+
+
+.casePepe > span#name {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+}
+
+
+span#pricecase {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+
+}
+
+#goToCase {
+    position: absolute;
+    bottom: 14px;
+    right: 20px;
+    height: 40px;
+    width: 100px;
+
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    box-shadow: 0px 0px 0px rgb(248, 247, 247);
+}
+
+#banner {
+    position: absolute;
+    width: 45%;
+    bottom: 0;
+    left: 2px;
+}
+
+.cases {
+    position: relative;
+    top: 100px;
+    width: 90%;
+    left: 5%;
+    height: 200px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cases > div {
+    width: 48%;
+    height: 100%;
+    background-color: rgb(21, 21, 24);
+    border-radius: 10px;
+}
+
+
+/* profile */
+
+.user-image {
+    border-radius: 50%;
+    background-color: rgb(21, 21, 24);
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.user-name {
+    color: white;
+    position: relative;
+    top: 110px;
+    font-weight: 600;
+}
+
+h2#yourgifts {
+    position: relative;
+    top: 130px;
+    font-weight: 600;
+}
+
+button.sellall {
+    transition: 0.4s;
+    height: 60px;
+    width: 90%;
+    left: 5%;
+    position: fixed;
+    bottom: 100px;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(21, 21, 24);
+    border-bottom: 3px solid rgb(10, 10, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    color: rgb(211, 211, 211);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.user-gifts {
+    position: relative;
+    top: 140px;
+    border-radius: 15px;
+    width: 90%;
+    left: 5%;
+    height: 50px;
+    background-color: rgb(21, 21, 24);
+    color: rgb(155, 155, 155);
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    width: 90%;
+    left: 5%;
+    height: 50px;
+
+    position: relative;
+    top: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons > button {
+    width: 48%;
+    height: 100%;
+
+    transition: 0.4s;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(21, 21, 24);
+    border-bottom: 3px solid rgb(10, 10, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(211, 211, 211);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#deposit {
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    color: black;
+    cursor: pointer;
+
+    animation: drug 5s infinite ease;
+}
+
+
+
+.screen {
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#withdraw-window {
+    transition: 1s;
+    position: fixed;
+    width: 90%;
+    height: 230px;
+    border-radius: 15px;
+    left: 5%;
+    top: calc(50% - 220px);
+    z-index: 2000;
+    background-color: rgb(21, 21, 24);
+    border-bottom: 3px solid rgb(10, 10, 10);
+    opacity: 0;
+    top: -60%;
+    
+}
+
+#deposit-window {
+    transition: 1s;
+    position: fixed;
+    width: 90%;
+    height: 400px;
+    background-color: rgb(151, 196, 235);
+    border-radius: 15px;
+    left: 5%;
+    top: calc(50% - 220px);
+    z-index: 2000;
+    background-color: rgb(21, 21, 24);
+    border-bottom: 3px solid rgb(10, 10, 10);
+    opacity: 0;
+    top: -60%;
+    
+}
+
+#withdraw-window > h2 {
+    width: 90%;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: white;
+    font-weight: 600;
+}
+
+#deposit-window > h2 {
+    width: 90%;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    color: white;
+    font-weight: 600;
+}
+
+#withdraw-window > h2.second {
+    width: 90%;
+    position: absolute;
+    top: 160px;
+    left: 30px;
+    color: white;
+    font-weight: 600;
+}
+
+#deposit-window > h2.second {
+    width: 90%;
+    position: absolute;
+    top: 160px;
+    left: 30px;
+    color: white;
+    font-weight: 600;
+}
+
+#withdraw-window > h5 {
+    width: 90%;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    color: rgb(179, 179, 179);
+    font-weight: 300;
+    font-size: 11px;
+}
+
+#deposit-window > h5 {
+    width: 90%;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    color: rgb(179, 179, 179);
+    font-weight: 300;
+    font-size: 11px;
+}
+
+#withdraw-window > h5.second {
+    width: 90%;
+    position: absolute;
+    top: 190px;
+    left: 30px;
+    color: rgb(179, 179, 179);
+    font-weight: 300;
+    font-size: 11px;
+}
+
+#deposit-window > h5.second {
+    width: 90%;
+    position: absolute;
+    top: 190px;
+    left: 30px;
+    color: rgb(179, 179, 179);
+    font-weight: 300;
+    font-size: 11px;
+}
+
+#withdraw-window > button {
+    transition: 0.4s;
+    height: 60px;
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    bottom: 20px;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+
+#deposit-window > button {
+    transition: 0.4s;
+    height: 60px;
+    width: 90%;
+    left: 5%;
+    position: absolute;
+    bottom: 20px;
+    border: none;
+    border-radius: 16px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#withdraw-window > input {
+    font-family: "Unbounded", monospace;
+    width: calc(85% - 80px);
+    left: 7.5%;
+    height: 50px;
+    position: absolute;
+    top: 80px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(15, 15, 17);
+    color: white;
+}
+
+#deposit-window > input {
+    font-family: "Unbounded", monospace;
+    width: calc(85% - 80px);
+    left: 7.5%;
+    height: 50px;
+    position: absolute;
+    top: 80px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(15, 15, 17);
+    color: white;
+}
+
+#withdraw-window > input.second {
+    font-family: "Unbounded", monospace;
+    width: calc(85% - 80px);
+    left: 7.5%;
+    height: 50px;
+    position: absolute;
+    top: 234px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(15, 15, 17);
+    color: white;
+}
+
+#deposit-window > input.second {
+    font-family: "Unbounded", monospace;
+    width: calc(85% - 80px);
+    left: 7.5%;
+    height: 50px;
+    position: absolute;
+    top: 234px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(15, 15, 17);
+    color: white;
+}
+
+#withdraw-window > #star {
+    position: absolute;
+    right: calc(5% + 30px);
+    top: 86px
+}
+
+#deposit-window > #star {
+    position: absolute;
+    right: calc(5% + 30px);
+    top: 86px
+}
+
+/* frens */
+.pepe {
+    background-color: rgb(21, 21, 24);
+    opacity: 0.9;
+    border-radius: 15px;
+    width: 90%;
+    height: 100px;
+    position: relative;
+    left: 5%;
+    text-align: center;
+    
+    top: 100px;
+    margin-top: 10px;
+
+    padding-top: 20px;
+} 
+
+.pepe > h4 {
+    position: relative;
+    top: 40px;
+}
+
+.pepe > h1 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.pepe > h1 {
+    color: white;
+    font-size: 40px;
+}
+
+h1.frens, h5.frens {
+    color: rgb(224, 224, 224);
+    width: 90%;
+    left: 5%;
+    position: relative;
+    top: 40px;
+}
+
+h5.frens {
+    top: 50px;
+    color: rgb(180, 180, 180);
+    font-weight: 400;
+}
+
+h3#invited {
+    width: 90%;
+    position: relative;
+    top: 120px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(172, 172, 172);
+    left: 5%;
+}
+
+.link {
+    background-color: rgb(21, 21, 24);
+    opacity: 0.9;
+    border-radius: 15px;
+    width: 90%;
+    height: 40px;
+    position: relative;
+    left: 5%;
+    text-align: center;
+    
+    top: 130px;
+    margin-top: 10px;
+
+    padding-top: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.link > h1 {
+    font-size: 14px;
+}
+
+.white {
+    color: white;
+}
+
+.notify {
+    transition: 0.5s;
+    width: calc(90% - 40px);
+    padding: 20px 20px;
+    position: fixed;
+    top: -80px; /* 20px */
+    left: 5%;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    border-radius: 10px;
+    z-index: 1000;
+    color: white;
+    font-weight: 500;
+}
+
+body {
+    position: relative;
+    top: 80px;
+}
+
+.yellow {
+    color: rgb(255, 196, 0);
+}
+
+@keyframes logo {
+    from {
+        scale: 1;
+    }
+
+    20% {
+        scale: 1.05;
+    }
+
+    30% {
+        scale: 1;
+    }
+
+    40% {
+        scale: 1.05;
+    }
+    to{ 
+        scale: 1;
+    }
+}
+
+.promo {
+    width: calc(90% - 50px);
+    padding: 10px 25px;
+    left: 5%;
+    height: 160px;
+    position: relative;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    top: 140px;
+    border-radius: 10px;
+}
+
+.promo > h1 {
+    font-size: 28px;
+}
+
+.promo > div {
+    width: 100%;
+
+    position: relative;
+    height: 50px;
+    top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.promo > div > input {
+    font-family: "Unbounded", monospace;
+    width: calc(48% - 80px);
+    height: 100%;
+    position: absolute;
+
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(15, 15, 17);
+    color: white;
+}
+
+.promo > div > button {
+    font-family: "Unbounded", monospace;
+    width: calc(48% - 0px);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(192, 190, 190);
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+
+#labelbig {
+    position: relative;
+    top: 60px;
+    left: 5%;
+    padding: 5px 10px;
+    background-color: rgb(20, 20, 22);
+    color: rgb(177, 177, 177);
+    width: 61px;
+    border-radius: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid rgb(10, 10, 10);
+}
+
+#labelbig2 {
+    position: relative;
+    top: 100px;
+    left: 5%;
+    padding: 5px 10px;
+    background-color: rgb(20, 20, 22);
+    color: rgb(177, 177, 177);
+    width: 92px;
+    border-radius: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid rgb(10, 10, 10);
+}
+
+.auctions {
+    position: relative;
+    left: 5%;
+    top: 120px;
+    width: 90%;
+    height: 260px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    top: 120px;
+}
+
+.auctions > div {
+    width: calc(50% - 5px);
+    border-radius: 12px;
+    height: 100%;
+    background-color: rgb(20, 20, 22);
+    border-bottom: 3px solid rgb(10, 10, 10);
+    cursor: pointer;
+}
+
+.auctions > div > img {
+    position: relative;
+    width: 70%;
+    top: 20px;
+    left: 15%;
+}
+
+.auctions > div > button {
+    position: absolute;
+    width: 40%;
+    margin-left: 5%;
+    bottom: 20px;
+    height: 40px;
+    font-family: "Unbounded", monospace;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.auctions > div > span#f {
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px 10px;
+    background-color: rgb(32, 33, 34);
+    width: 30%;
+    left: 7%;
+    bottom: 70px;
+    border-radius: 10px;
+}
+
+.auctions > div > span#s {
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px 10px;
+    background-color: rgb(32, 33, 34);
+    width: 30%;
+    right: 7%;
+    bottom: 70px;
+    border-radius: 10px;
+}
+
+/* AUCTIONS */
+.auc-window {
+    width: 90%;
+    left: 5%;
+    height: 300px;
+    top: 70px;
+    position: relative;
+    text-align: center;
+    border-radius: 12px;
+
+}
+
+.auc-window-blur {
+    width: 90%;
+    left: 5%;
+    background-color: rgb(26, 26, 27);
+    opacity: 0.8;
+    height: 300px;
+    top: 70px;
+    position: absolute;
+    text-align: center;
+    border-radius: 12px;
+
+}
+
+.auc-window > img {
+    width: 200px;
+    margin-top: 20px;
+}
+
+.bet {
+    position: fixed;
+    width: 90%;
+    left: 5%;
+    bottom: 100px;
+    height: 50px;
+    font-family: "Unbounded", monospace;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+    border-radius: 10px;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+
+    cursor: pointer;
+    z-index: 100;
+}
+
+@keyframes drug {
+    from {
+        box-shadow: 0px 0px 20px black;
+    }
+    50% {
+        box-shadow: 0px 0px 30px rgb(212, 157, 74);
+    }
+    to {
+        box-shadow: 0px 0px 20px black;
+    }
+}
+
+#goToCase {
+    animation: drug 5s infinite ease;
+}
+
+#spin {
+    animation: drug 5s infinite ease;
+}
+
+/* crash */
+.cloud {
+    position: relative;
+    top: 80px;
+    width: 90%;
+    left: 5%;
+    height: 300px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.clone {
+    position: absolute;
+    top: 80px;
+    width: 90%;
+    left: 5%;
+    height: 300px;
+    background-color: rgb(26, 26, 27);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+    font-size: 40px;
+    font-weight: 700;
+    opacity: 0.6;
+}
+
+.buttonsbar {
+    width: 90%;
+    left: 5%;
+    position: relative;
+    top: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsbar > button {
+    font-family: "Unbounded", monospace;
+    width: calc(48% - 0px);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 196, 0);
+    border-bottom: 3px solid rgb(172, 107, 10);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    font-size: 16px;
+    transition: 0.3s;
+    
+}
+
+.buttonsbar > input {
+    width: 48%;
+    font-family: "Unbounded", monospace;
+    width: calc(48% - 75px);
+    height: 100%;
+
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 25px;
+    padding-right: 50px;
+    outline: none;
+    border: none;
+    background-color: rgb(15, 15, 17);
+    border-bottom: 3px solid rgb(11, 11, 12);
+    color: white;
+    transition: 0.4s;
+    font-size: 16px;
+}
+
+.buttonsbar > input:focus-within {
+    border-bottom: 3px solid rgb(250, 203, 47);
+}
+
+#st {
+    position: absolute;
+    top: 12px;
+    right: 56%;
+}
+
+#x {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px 70px;
+}
+
+.history {
+    position: relative;
+    width: 90%;
+    height: 100px;
+
+    left: 5%;
+    top: 120px;
+
+}
+
+.history > div {
+    width: (100% - 50px);
+
+    height: 40px;
+    padding: 25px 0px;
+    background-color: rgb(15, 15, 17);
+    border-radius: 12px;
+    color: white
+}
+
+.history > div > span#profit {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
