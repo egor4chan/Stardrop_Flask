@@ -121,9 +121,25 @@ class Payments:
                 return True
         except Exception as ex:
             return ex
+        
+    def GetHistory(self, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT * FROM `pay` WHERE user_id = {user_id}"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            return rows
+        
+    def GetHistoryLen(self, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT * FROM `pay` WHERE user_id = {user_id}"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            return len(rows)
 
 payment = Payments()
 #payment.NewPayment(1, 'withdraw', 100)
-payment.PrintAllData()
+print(payment.GetHistory(5954926451))
 
 

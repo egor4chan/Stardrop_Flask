@@ -164,6 +164,20 @@ def createTransaction():
     except Exception as error:
         print(error)
         return 'False'
+    
+@app.route('/gettransactions', methods=['POST'])
+def getTransaction():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        
+        result = pay.GetHistory(user_id)
+        print('SUCC')
+        return [result]
+
+    except Exception as error:
+        print('ERROR')
+        return ['False']
 
 
 if __name__ == '__main__':

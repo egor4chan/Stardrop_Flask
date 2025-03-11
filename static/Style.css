@@ -1261,6 +1261,7 @@ footer {
     z-index: 100;
 }
 
+
 @keyframes drug {
     from {
         box-shadow: 0px 0px 20px black;
@@ -1413,4 +1414,75 @@ footer {
     font-weight: 700;
     display: flex;
     align-items: center;
+}
+
+#trans-history {
+    position: relative;
+    top: 160px;
+    color: grey;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: rgb(25, 25, 26);
+    width: 194px;
+}
+
+.list {
+    width: 90%;
+    height: 200px auto;
+    left: 5%;
+    position: relative;
+    top: 180px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+}
+
+.list > div {
+    width: calc(100% - 40px);
+    height: 50px;
+    padding: 10px 20px;
+    background-color: rgb(25, 25, 26);
+    border-bottom: 3px solid rgb(15, 15, 15);
+    border-radius: 10px;
+    position: relative;
+    margin-top: 5px;
+}
+
+.list > div#no {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: rgb(139, 139, 139);
+    font-size: 12px;
+}
+
+#trans-type {
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 10px;
+    color: rgb(235, 235, 235);
+    font-weight: 700;
+}
+
+#trans-status {
+    position: absolute;
+    margin-top: 28px;
+    font-size: 14px;
+    margin-left: 10px;
+    color: rgb(196, 196, 196);
+    font-weight: 700;
+}
+
+#trans-amount {
+    position: absolute;
+    margin-top: 0px;
+    font-size: 14px;
+    right: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
