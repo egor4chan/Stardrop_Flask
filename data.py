@@ -51,6 +51,15 @@ class Data:
             else:
                 print(response['income'])
                 return response['income']
+            
+    def GetRefer(self, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT refer_id FROM `data` WHERE user_id = {user_id}"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchone()
+            print((rows['refer_id']))
+            return rows['refer_id']
         
     def GetReferralsCount(self, user_id):
         with self.connection.cursor() as cursor:
@@ -60,6 +69,17 @@ class Data:
             rows = cursor.fetchall()
             print(len(rows))
             return len(rows)
+        
+    def RewardUser(self, user_id, prize):
+        total = int(self.GetUserIncome(user_id)) + prize
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"UPDATE `data` SET income = {total} WHERE user_id = {user_id}"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except:
+            return False
         
     def DeleteUser(self, user_id):
         with self.connection.cursor() as cursor:
@@ -137,10 +157,14 @@ class Payments:
 
             rows = cursor.fetchall()
             return len(rows)
+        
+    
 
 payment = Payments()
 #payment.NewPayment(1, 'withdraw', 100)
 #print(payment.GetHistory(5954926451))
-payment.PrintAllData()
+#payment.PrintAllData()
+db = Data()
+db.PrintAllData()
 
 

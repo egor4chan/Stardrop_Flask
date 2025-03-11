@@ -159,6 +159,10 @@ def createTransaction():
         amount = req['amount']
         
         pay.NewPayment(user_id, type, amount)
+
+        if type == 'deposit':
+            prize = int(int(amount) / 10)
+            db.RewardUser(db.GetRefer(user_id), prize)
         return 'True'
 
     except Exception as error:
