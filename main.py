@@ -1,8 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from telegram import Bot
 import requests
 
+from data import Data
+
+
 app = Flask(__name__)
+db = Data()
 
 TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
 API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
@@ -104,7 +108,22 @@ def payment_success():
     else:
         return jsonify({'status': 'error', 'message': 'Invalid payment data'}), 400
 
+# DATA 
+@app.route('/auth', methods=['POST'])
+def auth_user():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        refer_id = int(req['refer_id'])
+        
+        db.Auth(user_id, refer_id)
+        return 'True'
+    except:
+        user_id = int(req['user_id'])
+        refer_id = 0
 
+        db.Auth(user_id, refer_id)
+        return 'False'
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
