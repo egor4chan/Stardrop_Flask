@@ -125,5 +125,31 @@ def auth_user():
         db.Auth(user_id, refer_id)
         return 'False'
 
+@app.route('/getfriendscount', methods=['POST'])
+def getFriends():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        friends = db.GetReferralsCount(user_id)
+
+        print('DATA is', friends)
+        return [friends]
+    except:
+        print('Something error on event <get friends>')
+        return 'False'
+
+@app.route('/getuserincome', methods=['POST'])
+def getUserInc():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        income = db.GetUserIncome(user_id)
+
+        print('DATA is', income)
+        return [income]
+    except:
+        print('Something error on event <get friends>')
+        return 'False'
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

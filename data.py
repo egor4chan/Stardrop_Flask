@@ -59,6 +59,16 @@ class Data:
             rows = cursor.fetchall()
             print(len(rows))
             return len(rows)
+        
+    def DeleteUser(self, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"DELETE FROM `data` WHERE user_id = {user_id}"
+            cursor.execute(select_all_rows)
+            self.connection.commit()
+            self.connection.close()
+            print(True)
+            
+        
 
 db = Data()
 db.PrintAllData()
