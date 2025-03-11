@@ -140,6 +140,7 @@ class Payments:
 
 payment = Payments()
 #payment.NewPayment(1, 'withdraw', 100)
-print(payment.GetHistory(5954926451))
+#print(payment.GetHistory(5954926451))
+payment.PrintAllData()
 
 
