@@ -34,13 +34,15 @@ for (var i = 1; i != 8; i++) {
     }
 }
 
+allWinItems = [allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+
 console.log(lastWinItem) // цена максимально доступного выигранного подарка
 console.log(allWinItems) // список всех доступных items выигранных по коэф
 
 var winIndex = randomInteger(0, allWinItems.length-1)
 var win_price = allWinItems[winIndex] // окончательная цена приза
 
-console.log('You won item priced ', win_price)
+console.log(' won item priced ', win_price)
 
 var fileName
 

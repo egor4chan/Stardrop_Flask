@@ -34,6 +34,8 @@ for (var i = 1; i != 8; i++) {
     }
 }
 
+allWinItems = [allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+
 console.log(lastWinItem) // цена максимально доступного выигранного подарка
 console.log(allWinItems) // список всех доступных items выигранных по коэф
 
