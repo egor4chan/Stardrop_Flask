@@ -1,7 +1,7 @@
 function generate_payload(price) {
     try {
         const httpRequest = new XMLHttpRequest();
-        httpRequest.open('GET', `https://egor4chan-stardrop-flask-ef79.twc1.net/generate-invoice${price}`, true);
+        httpRequest.open('GET', `https://egor4chan-stardrop-flask-a048.twc1.net/generate-invoice${price}`, true);
     
         httpRequest.onprogress = function () {
           if (httpRequest.status >= 200 && httpRequest.status < 300) {
