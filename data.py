@@ -70,5 +70,3 @@ class Data:
             
         
 
-db = Data()
-db.PrintAllData()

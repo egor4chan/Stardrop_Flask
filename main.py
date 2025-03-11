@@ -132,11 +132,10 @@ def getFriends():
         user_id = int(req['user_id'])
         friends = db.GetReferralsCount(user_id)
 
-        print('DATA is', friends)
         return [friends]
-    except:
-        print('Something error on event <get friends>')
-        return 'False'
+    except Exception as error:
+        print(error)
+        return ['Error']
 
 @app.route('/getuserincome', methods=['POST'])
 def getUserInc():
@@ -145,11 +144,10 @@ def getUserInc():
         user_id = int(req['user_id'])
         income = db.GetUserIncome(user_id)
 
-        print('DATA is', income)
         return [income]
-    except:
-        print('Something error on event <get friends>')
-        return 'False'
+    except Exception as error:
+        print(error)
+        return ['Error']
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
