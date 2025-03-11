@@ -1497,6 +1497,17 @@ footer {
     animation: none;
 }
 
+.codeBlue {
+    background: linear-gradient(70deg, rgb(9, 131, 230), rgb(16, 101, 228));
+}
+
+.codeBlue > #goToCase {
+    background-color: rgb(236, 236, 236);
+    border-bottom: 3px solid rgb(204, 204, 204);
+    animation: none;
+    color: black;
+}
+
 .blackWhite {
     background: linear-gradient(70deg, rgb(7, 7, 7), rgb(24, 24, 24));
 }
