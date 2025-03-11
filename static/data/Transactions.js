@@ -109,4 +109,6 @@ function get_transactions_user() {
 }
 
 
-get_transactions_user()
+setTimeout(() => {
+    get_transactions_user()
+}, 500);
