@@ -11,7 +11,7 @@ function generate_payload(price) {
               
               window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
                 if (status === 'paid') {
-                  send_notify('Successful!')
+                  send_notify('Успешное пополнение!')
                   get_transaction(Number(document.getElementById('dep_count').value))
                   abort()
 
@@ -22,9 +22,9 @@ function generate_payload(price) {
                   xhr.send();
                   
                 } else if (status === 'cancelled') {
-                  send_notify('Payment cancelled. Try again!')
+                  send_notify('Оплата прервана. Попробуйте снова.')
                 } else {
-                  send_notify('Payment cancelled. Try again!')
+                  send_notify('Оплата прервана. Попробуйте снова.')
                 }
               });
             } else {

@@ -466,7 +466,7 @@ span#pricecase {
     bottom: 14px;
     right: 20px;
     height: 40px;
-    width: 100px;
+    width: 120px;
 
     border: none;
     border-radius: 12px;
@@ -489,7 +489,7 @@ span#pricecase {
     bottom: 14px;
     right: 20px;
     height: 40px;
-    width: 100px;
+    width: 120px;
 
     border: none;
     border-radius: 12px;
@@ -603,7 +603,7 @@ button.sellall {
     height: 50px;
 
     position: relative;
-    top: 120px;
+    top: 135px;
     display: flex;
     justify-content: space-between;
 }
@@ -626,6 +626,22 @@ button.sellall {
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+#bigbalance {
+    position: relative;
+    text-align: center;
+    top: 120px;
+    width: 200px;
+    height: 40px;
+    left: calc(50% - 100px);
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 #deposit {
@@ -675,7 +691,7 @@ button.sellall {
     transition: 1s;
     position: fixed;
     width: 90%;
-    height: 230px;
+    height: 240px;
     
     background-color: rgb(151, 196, 235);
     border-radius: 15px;
@@ -1026,7 +1042,7 @@ body {
     background-color: rgb(15, 15, 17);
     color: rgb(255, 255, 255);
     border-bottom: 3px solid rgb(12, 12, 11);
-    top: 140px;
+    top: 155px;
     border-radius: 10px;
 }
 
@@ -1086,7 +1102,7 @@ body {
     padding: 5px 10px;
     background-color: rgb(20, 20, 22);
     color: rgb(177, 177, 177);
-    width: 61px;
+    width: 66px;
     border-radius: 10px;
     font-size: 14px;
     border-bottom: 2px solid rgb(10, 10, 10);

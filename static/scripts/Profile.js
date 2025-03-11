@@ -36,6 +36,6 @@ function withdraw() {
 function create_withdraw() {
     // снять звезды с баланса
     
-    send_notify('Success! We will process your application shortly...')
+    send_notify('Успешно!')
     abort()
 }

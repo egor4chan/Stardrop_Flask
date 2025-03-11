@@ -8,16 +8,21 @@ function test_withdraw() {
     var withdraw_value = document.getElementById('with_count').value
 
     if (Number(withdraw_value) <= get_user_balance()) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=❓+Withdraw:+${withdraw_value}`, true);
-        xhr.send();
+        if (Number(withdraw_value) >= 100) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=❓+Withdraw:+${withdraw_value}`, true);
+            xhr.send();
 
-        send_transaction(Number(document.getElementById('with_count').value))
-        abort()
-        send_notify('Successful! Expect, we will pay out the stars as fast as we can!')
+            send_transaction(Number(document.getElementById('with_count').value))
+            abort()
+            send_notify('Выплата создана. Мы пополним Ваш баланс звездами в течение ближайшего времени.')   
+        }
+        else {
+            send_notify('Вывод доступен от 100 звезд.')
+        }
     }
     else {
-        send_notify('Insufficient funds...')
+        send_notify('Недостаточный баланс...')
     }
 }
 
