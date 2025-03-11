@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from telegram import Bot
 import requests
 
@@ -177,7 +177,8 @@ def getTransaction():
 
     except Exception as error:
         print('ERROR')
-        return ['False']
+        redirect('/')
+        return 'False'
 
 
 if __name__ == '__main__':
