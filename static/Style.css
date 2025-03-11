@@ -1486,3 +1486,59 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
+.codeRed {
+    background: linear-gradient(70deg, rgb(185, 0, 0), rgb(238, 39, 39));
+}
+
+.codeRed > #goToCase {
+    background-color: rgb(14, 14, 15);
+    border-bottom: 3px solid rgb(12, 12, 12);
+    animation: none;
+}
+
+.blackWhite {
+    background: linear-gradient(70deg, rgb(7, 7, 7), rgb(24, 24, 24));
+}
+
+.blackWhite > #goToCase {
+    background-color: rgb(241, 241, 241);
+    border-bottom: 3px solid rgb(173, 173, 173);
+    color: black;
+    animation: none;
+}
+
+.randomPepe {
+    background: linear-gradient(70deg, rgb(42, 161, 18), rgb(7, 187, 157));
+}
+
+.randomPepe > #goToCase {
+    background-color: rgb(241, 241, 241);
+    border-bottom: 3px solid rgb(173, 173, 173);
+    color: black;
+    animation: none;
+}
+
+.ringSocks {
+    background: linear-gradient(70deg, rgb(83, 83, 83), rgb(253, 172, 23));
+}
+
+.ringSocks > #goToCase {
+    background-color: rgb(240, 240, 240);
+    
+    border-bottom: 3px solid rgb(173, 173, 173);
+    color: rgb(0, 0, 0);
+    animation: none;
+}
+
+.freeStars {
+    background: linear-gradient(70deg, rgb(253, 186, 1), rgb(255, 124, 2));
+}
+
+.freeStars > #goToCase {
+    background-color: rgb(240, 240, 240);
+    
+    border-bottom: 3px solid rgb(173, 173, 173);
+    color: rgb(0, 0, 0);
+    animation: none;
+}
