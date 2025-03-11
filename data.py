@@ -1,4 +1,5 @@
 import pymysql
+from random import randint
 
 class Data:
     def __init__(self):
@@ -69,4 +70,60 @@ class Data:
             print(True)
             
         
+
+class Payments:
+
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+    ) 
+        
+    def generate_id(self):
+        symbols = 'qwertyuiopasdfghjklzxcvbnm1234567890'
+        length = 0
+        gen = ''
+        while length != 10:
+            gen = gen + symbols[randint(0, len(symbols)-1)]
+            length += 1
+        return gen
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `pay` (payment_id varchar(32) UNIQUE, user_id varchar(32), type varchar(32), amount varchar(32), status varchar(32))"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `pay`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def NewPayment(self, user_id, type, amount):
+        payment_id = str(self.generate_id())
+        status = 1
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"INSERT INTO `pay` (`payment_id`, user_id, `type`, amount, status) VALUES ('{payment_id}', {user_id}, '{type}', {amount}, {status});"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except Exception as ex:
+            return ex
+
+payment = Payments()
+#payment.NewPayment(1, 'withdraw', 100)
+payment.PrintAllData()
+
 

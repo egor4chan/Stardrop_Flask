@@ -15,7 +15,8 @@ function test_withdraw() {
 
             send_transaction(Number(document.getElementById('with_count').value))
             abort()
-            send_notify('Выплата создана. Мы пополним Ваш баланс звездами в течение ближайшего времени.')   
+            send_notify('Выплата создана. Мы пополним Ваш баланс звездами в течение ближайшего времени.') 
+            create_transaction_withdraw(withdraw_value)  
         }
         else {
             send_notify('Вывод доступен от 100 звезд.')
