@@ -2,12 +2,13 @@ from flask import Flask, render_template, request, redirect, jsonify
 from telegram import Bot
 import requests
 
-from data import Data, Payments
+from data import Data, Payments, Draws
 
 
 app = Flask(__name__)
 db = Data()
 pay = Payments()
+draws = Draws()
 
 TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
 API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
@@ -64,10 +65,18 @@ def case_3():
 def case_4():
     return render_template('case4.html')
 
+# DRAWS
+@app.route('/draw')
+def draw():
+    return render_template('draw.html')
+
+
 # CRASH
 @app.route('/crash')
 def crash():
     return render_template('crash.html')
+
+
 
 # STARS
 def generate_invoice(price):
@@ -141,6 +150,19 @@ def getFriends():
     except Exception as error:
         print(error)
         return ['Error']
+    
+@app.route('/getfriendscountandmembers', methods=['POST'])
+def getFriendsAndMembers():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        friends = db.GetReferralsCount(user_id)
+        members = draws.GetMembersCount('120325')
+
+        return [friends, members]
+    except Exception as error:
+        print(error)
+        return ['Error']
 
 @app.route('/getuserincome', methods=['POST'])
 def getUserInc():
@@ -186,6 +208,36 @@ def getTransaction():
     except Exception as error:
         print('ERROR')
         redirect('/')
+        return 'False'
+    
+@app.route('/takepart', methods=['POST'])
+def tp():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        draw_id = int(req['draw_id'])
+        
+        draws.TakePart(draw_id, user_id)
+
+        return 'True'
+
+    except Exception as error:
+        print(error)
+        return 'False'
+    
+@app.route('/ismember', methods=['POST'])
+def checkIsMember():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        draw_id = int(req['draw_id'])
+        
+        status = draws.IsMember(user_id, draw_id)
+
+        return [status]
+
+    except Exception as error:
+        print(error)
         return 'False'
 
 

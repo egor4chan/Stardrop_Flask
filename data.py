@@ -159,12 +159,77 @@ class Payments:
             return len(rows)
         
     
+class Draws:
+
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+    ) 
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `draws` (draw_id varchar(32), user_id varchar(32))"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def TakePart(self, draw_id, user_id):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"INSERT INTO `draws` (draw_id, user_id) VALUES ({draw_id}, '{user_id}');"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except:
+            return False
+        
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `draws`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def IsMember(self, user_id, draw_id): # returned 1 if IsMember
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT draw_id FROM `draws` WHERE user_id = {user_id} "
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            
+            status = 0
+            for i in rows:
+                if str(draw_id) == str(i['draw_id']):
+                    status = 1
+                else:
+                    pass
+            return status
+        
+    def GetMembersCount(self, draw_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT user_id FROM `draws` WHERE draw_id = {draw_id}"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            print(len(rows))
+            return len(rows)
 
 payment = Payments()
-#payment.NewPayment(1, 'withdraw', 100)
-#print(payment.GetHistory(5954926451))
-#payment.PrintAllData()
 db = Data()
-db.PrintAllData()
+draw = Draws()
+
+draw.PrintAllData()
+draw.GetMembersCount('120325')
+
+
 
 
