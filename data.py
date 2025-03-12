@@ -227,9 +227,7 @@ payment = Payments()
 db = Data()
 draw = Draws()
 
-draw.PrintAllData()
-draw.GetMembersCount('120325')
-
+db.PrintAllData()
 
 
 

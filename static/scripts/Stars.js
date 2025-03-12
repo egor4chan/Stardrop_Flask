@@ -1,4 +1,4 @@
-function generate_payload(price) {
+function generate_payload(price, priceforcase=0) {
     try {
         const httpRequest = new XMLHttpRequest();
         httpRequest.open('GET', `https://egor4chan-stardrop-flask-007f.twc1.net/generate-invoice${price}`, true);
@@ -23,6 +23,8 @@ function generate_payload(price) {
                   xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=💸+Deposit:+${deposit_value}`, true);
                   xhr.send();
                   create_transaction_deposit(deposit_value)
+
+                  button_get_deposit(priceforcase)
                   
                 } else if (status === 'cancelled') {
                   send_notify('Оплата прервана. Попробуйте снова.')

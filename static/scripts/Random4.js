@@ -9,7 +9,7 @@ function get_filename_winner() {
 var cf = 100 / randomInteger(1, 100) // 120 - максимаьный икс в первом кейсе
 cf = cf.toFixed(2) // коэффициент
 
-var caseFor500 = {1: 500, 2: 1000, 3: 2500, 4: 3000, 5: 5000, 6: 75000, 7: 80000, 8: 100000}
+var caseFor500 = {1: 250, 2: 750, 3: 2500, 4: 3000, 5: 5000, 6: 75000, 7: 80000, 8: 100000}
 
 function session(casePrice, cf, item) {
     if ((casePrice * cf) >= item) {
@@ -34,9 +34,10 @@ for (var i = 1; i != 8; i++) {
     }
 }
 
+
 allWinItems = [allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
 
-console.log(lastWinItem) // цена максимально доступного выигранного подарка
+
 console.log(allWinItems) // список всех доступных items выигранных по коэф
 
 var winIndex = randomInteger(0, allWinItems.length-1)
@@ -46,10 +47,10 @@ console.log('You won item priced ', win_price)
 
 var fileName
 
-if (win_price == 500) {
+if (win_price == 250) {
     fileName = '7.png'
 }
-if (win_price == 1000) {
+if (win_price == 750) {
     fileName = '3.png'
 }
 if (win_price == 2500) {
