@@ -13,7 +13,12 @@ function generate_payload(price, priceforcase=0) {
                 if (status === 'paid') {
                   
                   send_notify('Успешное пополнение!')
-                  get_transaction(Number(document.getElementById('dep_count').value))
+                  if (priceforcase==0) {
+                    get_transaction(Number(document.getElementById('dep_count').value))
+                  }
+                  else {
+                    get_transaction(Number(price))
+                  }
                   abort()
 
 
