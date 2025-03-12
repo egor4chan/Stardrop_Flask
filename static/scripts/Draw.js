@@ -2,6 +2,11 @@ var WebApp = window.Telegram.WebApp;
 var user_id = WebApp.initDataUnsafe.user.id
 var user_status 
 
+function sub() {
+    const url = 'https://t.me/Stardrop_Official'
+    location.href = url;
+}
+
 function point_move(members) {
     let pointbar = document.getElementById('point')
     let p = String((Number(members)/500)*100)
