@@ -2,18 +2,18 @@ var promoInput = document.getElementById('promoinput')
 var okButton = document.getElementById('okbtn')
 
 promoInput.oninput = function() {
-    okButton.style = 'background-color: rgb(255, 196, 0);border-bottom: 3px solid rgb(172, 107, 10);'
+    okButton.style = 'background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));border-bottom: 3px solid rgb(255, 136, 0);'
     okButton.removeAttribute('disabled')
 
     if (promoInput.value == '') {
-        okButton.style = 'background-color: rgb(197, 151, 0);border-bottom: 3px solid rgb(136, 85, 7);'
+        okButton.style = 'background: linear-gradient(45deg, rgb(197, 151, 0), rgb(196, 104, 0));border-bottom: 3px solid rgb(199, 106, 0);'
         okButton.setAttribute('disabled', 'true')
     } 
 }
 
 
 function disable_btn() {
-    okButton.style = 'background-color: rgb(197, 151, 0);border-bottom: 3px solid rgb(136, 85, 7);'
+    okButton.style = 'background: linear-gradient(45deg, rgb(197, 151, 0), rgb(196, 104, 0));border-bottom: 3px solid rgb(199, 106, 0);'
     okButton.setAttribute('disabled', 'true')
 }
 

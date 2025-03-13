@@ -648,8 +648,8 @@ button.sellall {
 }
 
 #deposit {
-    background-color: rgb(255, 196, 0);
-    border-bottom: 3px solid rgb(172, 107, 10);
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
+    border-bottom: 3px solid rgb(255, 136, 0);
     color: black;
     cursor: pointer;
 
@@ -793,8 +793,8 @@ button.sellall {
     bottom: 20px;
     border: none;
     border-radius: 16px;
-    background-color: rgb(255, 196, 0);
-    border-bottom: 3px solid rgb(172, 107, 10);
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
+    border-bottom: 3px solid rgb(255, 136, 0);
     font-family: "Unbounded", monospace;
     font-weight: 600;
     font-size: 17px;
@@ -815,8 +815,8 @@ button.sellall {
     bottom: 20px;
     border: none;
     border-radius: 16px;
-    background-color: rgb(255, 196, 0);
-    border-bottom: 3px solid rgb(172, 107, 10);
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
+    border-bottom: 3px solid rgb(255, 136, 0);
     font-family: "Unbounded", monospace;
     font-weight: 600;
     font-size: 17px;
@@ -966,8 +966,9 @@ h3#invited {
 }
 
 .link {
-    background-color: rgb(21, 21, 24);
-    opacity: 0.9;
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
+    border-bottom: 3px solid rgb(255, 136, 0);
+    opacity: 1;
     border-radius: 15px;
     width: 90%;
     height: 40px;
@@ -998,7 +999,7 @@ h3#invited {
     position: fixed;
     top: -80px; /* 20px */
     left: 5%;
-    background-color: rgb(255, 196, 0);
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
     border-bottom: 3px solid rgb(172, 107, 10);
     border-radius: 10px;
     z-index: 1000;
@@ -1573,6 +1574,26 @@ footer {
     border-radius: 12px;
 }
 
+.draw {
+    width: 90%;
+    height: 315px;
+    left: 5%;
+    position: relative;
+    background: linear-gradient(70deg, rgb(161, 235, 231), rgb(234, 152, 255));
+    top: 120px;
+    border-radius: 12px;
+}
+
+.draw2 {
+    width: 90%;
+    height: 315px;
+    left: 5%;
+    position: relative;
+    background: linear-gradient(70deg, rgb(236, 183, 9), rgb(197, 11, 243));
+    top: 120px;
+    border-radius: 12px;
+}
+
 .image {
     width: 100%;
     height: 200px;
@@ -1605,6 +1626,25 @@ footer {
     color: white;
 }
 
+
+
+.draw2 > span {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    top: 200px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: linear-gradient(70deg, rgb(207, 160, 5), rgb(173, 7, 214));
+    width: 120px;
+    left: calc(50% - 70px);
+    color: white;
+    opacity: 0.7;
+}
+
 .draw > button {
     font-family: "Unbounded", monospace;
     width: calc(90%);
@@ -1620,6 +1660,27 @@ footer {
     background-color: rgb(245, 245, 245);
     border-bottom: 3px solid rgb(192, 192, 192);
     color: rgb(82, 82, 82);
+    font-weight: 600;
+    font-size: 16px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.draw2 > button {
+    font-family: "Unbounded", monospace;
+    width: calc(90%);
+    height: 50px;
+    position: absolute;
+    right: 5%;
+    bottom: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 0px 20px;
+    outline: none;
+    border: none;
+    background-color: rgb(31, 31, 31);
+    border-bottom: 3px solid rgb(20, 20, 20);
+    color: rgb(236, 236, 236);
     font-weight: 600;
     font-size: 16px;
     transition: 0.3s;
@@ -1783,12 +1844,30 @@ footer {
     border: none;
     outline: none;
     border-radius: 0px 12px 12px 0px;
-    background-color: rgb(197, 151, 0);
-    border-bottom: 3px solid rgb(136, 85, 7);
+    background: linear-gradient(45deg, rgb(197, 151, 0), rgb(196, 104, 0));
+    border-bottom: 3px solid rgb(199, 106, 0);
     font-family: "Unbounded", monospace;
     font-weight: 600;
     transition: 0.3s;
     cursor: pointer;
     color: black;
     font-size: 14px;
+}
+
+.giveaway {
+    width: 90%;
+    height: 80px;
+    background: linear-gradient(45deg, black, rgb(4, 4, 119));
+    border-radius: 12px;
+    left: 5%;
+    position: relative;
+    top: 60px;
+    margin-bottom: 25px;
+}
+
+.giveaway > img {
+    position: absolute;
+    left: 20px;
+    height: 90%;
+    top: 5%
 }
