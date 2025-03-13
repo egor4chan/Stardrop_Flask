@@ -61,8 +61,14 @@ function claim(price_for_spin) {
     // ... сбор подарка
 }
 
+function Haptic() {
+    var WebApp = window.Telegram.WebApp;
+    WebApp.HapticFeedback.impactOccurred('light')
+}
+
+
 function sell_gift(price_for_spin, award=0) {
-    
+    Haptic()
     get_transaction(award)
     document.getElementById('spin').setAttribute('onclick', 'spin()')
 

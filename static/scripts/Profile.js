@@ -1,4 +1,11 @@
+function Haptic() {
+    var WebApp = window.Telegram.WebApp;
+    WebApp.HapticFeedback.impactOccurred('light')
+}
+
+
 function deposit() {
+    Haptic()
     var backScreen = document.getElementById('screen')
     backScreen.style.opacity = 0.5;
     backScreen.style.zIndex = 100;
@@ -29,6 +36,7 @@ function abort() {
 }
 
 function withdraw() {
+    Haptic()
     var backScreen = document.getElementById('screen')
     backScreen.style.opacity = 0.5;
     backScreen.style.zIndex = 100;
@@ -39,6 +47,7 @@ function withdraw() {
 }
 
 function promo_vvod() {
+    Haptic()
     window.scrollTo(0, 200)
     var promoblock = document.getElementById('promoblock')
     promoblock.style.zIndex = 1000

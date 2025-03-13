@@ -1,4 +1,10 @@
+function Haptic() {
+    var WebApp = window.Telegram.WebApp;
+    WebApp.HapticFeedback.impactOccurred('light')
+}
+
 function send_notify(message) {
+    Haptic()
     var notify = document.createElement('div')
     document.body.appendChild(notify)
     notify.setAttribute('class', 'notify')

@@ -11,6 +11,11 @@ promoInput.oninput = function() {
     } 
 }
 
+function Haptic() {
+    var WebApp = window.Telegram.WebApp;
+    WebApp.HapticFeedback.impactOccurred('light')
+}
+
 
 function disable_btn() {
     okButton.style = 'background: linear-gradient(45deg, rgb(197, 151, 0), rgb(196, 104, 0));border-bottom: 3px solid rgb(199, 106, 0);'
@@ -18,6 +23,7 @@ function disable_btn() {
 }
 
 function check_promo() {
+    Haptic()
     promo_back()
 
     var WebApp = window.Telegram.WebApp;
