@@ -9,6 +9,7 @@ function deposit() {
 }
 
 function abort() {
+    window.scrollTo(0, 0)
     var backScreen = document.getElementById('screen')
     backScreen.style.opacity = 0;
     backScreen.style.zIndex = -2;
@@ -39,10 +40,16 @@ function withdraw() {
 
 function promo_vvod() {
     window.scrollTo(0, 200)
+    var promoblock = document.getElementById('promoblock')
+    promoblock.style.zIndex = 1000
+    var backScreen = document.getElementById('screen')
+    backScreen.style.opacity = 0.5;
+    backScreen.style.zIndex = 100;
 }
 
 function promo_back() {
     window.scrollTo(0, 0)
+    abort()
 }
 
 
