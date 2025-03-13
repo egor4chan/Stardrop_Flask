@@ -2,13 +2,14 @@ from flask import Flask, render_template, request, redirect, jsonify
 from telegram import Bot
 import requests
 
-from data import Data, Payments, Draws
+from data import Data, Payments, Draws, Promocode
 
 
 app = Flask(__name__)
 db = Data()
 pay = Payments()
 draws = Draws()
+promo = Promocode()
 
 TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
 API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
@@ -240,6 +241,21 @@ def checkIsMember():
         print(error)
         return 'False'
 
+
+@app.route('/check_promo', methods=['POST'])
+def checkPromo():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        promo_code = req['promo_code']
+        
+        status = promo.ActivatePromocode(promo_code, user_id)
+
+        return [status]
+
+    except Exception as error:
+        print(error)
+        return 'False'
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

@@ -237,7 +237,7 @@ class Promocode:
         
     def CreateDataTable(self):
         with self.connection.cursor() as cursor:
-            create_table_query = "CREATE TABLE `promocode` (promo_code varchar(32), award varchar(32), user_id varchar(32))"
+            create_table_query = "CREATE TABLE `promousers` (promo_code varchar(32), user_id varchar(32))"
 
             cursor.execute(create_table_query)
             print('Success')
@@ -245,7 +245,7 @@ class Promocode:
     def PrintAllData(self):
         with self.connection.cursor() as cursor:
             print("-" * 20)
-            select_all_rows = "SELECT * FROM `promocode`"
+            select_all_rows = "SELECT * FROM `promos`"
             cursor.execute(select_all_rows)
 
             rows = cursor.fetchall()
@@ -253,20 +253,129 @@ class Promocode:
                 print(row)
             print("-" * 20)
 
-    def CreatePromocode(self, promo_code, award, count, user_id=0):
+    def CreatePromocode(self, promo_code, award, activations):
         try:
             with self.connection.cursor() as cursor:
-                insert_query = f"INSERT INTO `promocode` (promo_code, award, user_id) VALUES ({promo_code}, '{award}', '{user_id}');"
+   
+                insert_query = f"INSERT INTO `promos` (promo_code, award, activations) VALUES ('{promo_code}', '{award}', '{activations}');"
+                cursor.execute(insert_query)
+                    
+                self.connection.commit()
+                return True
+        except Exception as ex:
+            print(ex)
+            return False
+        
+    def ReturnPromoStatus(self, promo_code): # есть ли такой промо и сколько активаций
+        with self.connection.cursor() as cursor:
+            try: 
+                select_all_rows = f"SELECT `activations` FROM `promos` WHERE `promo_code` = '{promo_code}'"
+                cursor.execute(select_all_rows)
+
+                rows = cursor.fetchone()['activations']
+                return rows
+            except:
+                # если нет такого промо
+                return False
+
+    def UpdateActivations(self, promo_code, act):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"UPDATE `promos` SET `activations` = '{act}' WHERE `promo_code` = '{promo_code}'"
                 cursor.execute(insert_query)
                 self.connection.commit()
                 return True
         except:
             return False
 
+    def MinusActivate(self, promo_code):
+        activations = self.ReturnPromoStatus(promo_code)
+        new = int(activations) - 1
+        if int(activations) >= 1:
+            # если остались акцивации
+            try:
+                with self.connection.cursor() as cursor:
+                    insert_query = f"UPDATE `promos` SET `activations` = '{new}' WHERE `promo_code` = '{promo_code}'"
+                    cursor.execute(insert_query)
+                    self.connection.commit()
+                    return True
+            except:
+                return False
+            pass
+        else:
+            pass
+            # удалить промо
+    
+    def ReturnAwardPromo(self, promo_code):
+        with self.connection.cursor() as cursor:
+            try: 
+                select_all_rows = f"SELECT `award` FROM `promos` WHERE `promo_code` = '{promo_code}'"
+                cursor.execute(select_all_rows)
+
+                rows = cursor.fetchone()['award']
+                return rows
+            except:
+                # если нет такого промо
+                return False
+
+    # table promousers
+    def CheckUniqe(self, promo, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT `user_id` FROM `promousers` WHERE `promo_code` = '{promo}' AND `user_id` = '{user_id}'"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchone()
+            return rows # None если не активировал
+
+    def ActivatePromocode(self, promo, user_id):
+        if self.ReturnPromoStatus(promo) != False: # если промокод существует
+            if int(self.ReturnPromoStatus(promo)) > 0:
+                if self.CheckUniqe(promo, user_id) == None: # если чел не вводил
+                    try:
+                        with self.connection.cursor() as cursor:
+                            insert_query = f"INSERT INTO `promousers` (`promo_code`, `user_id`) VALUES ('{promo}', '{user_id}');"
+                            cursor.execute(insert_query)
+                            self.connection.commit()
+                            self.MinusActivate(promo) # снять 1 активацию
+                            return int(self.ReturnAwardPromo(promo))
+                    except Exception as ex:
+                        return ex
+                else:
+                    return 'activated' # уже активирован юзером
+            else:
+                return 'notactive' # закончился
+        else:
+            return 'nopromo' # нет такого нахуй
+        
+    def PrintPromousers(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `promousers`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def DeletePromousers(self):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"DELETE FROM promousers"
+            cursor.execute(select_all_rows)
+            self.connection.commit()
+            self.connection.close()
+
+
 payment = Payments()
 promo = Promocode()
+#promo.DeletePromousers()
+#print(promo.ActivatePromocode('STARDROP30', 11))
+#print(promo.ReturnAwardPromo('STARDROP30')) 
+#promo.UpdateActivations('STARDROP30', 500)
+promo.PrintPromousers()
+#promo.PrintAllData()
+#print(promo.ReturnPromoStatus('STARDROP30')) # --- кол-во активаций
 
-promo.PrintAllData()
 
 
 

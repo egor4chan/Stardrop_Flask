@@ -40,3 +40,9 @@ function log_opened(profit, price) {
         xhr.send();
     }
 }
+
+function promo_activated() {
+    let xhr = new XMLHttpRequest();
+        xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=✅+Activated+promo:+${window.localStorage.getItem('username')}`, true);
+        xhr.send();
+}
