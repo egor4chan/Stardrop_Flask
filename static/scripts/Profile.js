@@ -38,13 +38,11 @@ function withdraw() {
 }
 
 function promo_vvod() {
-    var backScreen = document.getElementById('screen')
-    backScreen.style.opacity = 0.5;
-    backScreen.style.zIndex = 100;
+    window.scrollTo(0, 200)
+}
 
-    var promoblock = document.getElementById('promoblock')
-    promoblock.style.top = '20px'
-    promoblock.style.zIndex = 10000
+function promo_back() {
+    window.scrollTo(0, 0)
 }
 
 
