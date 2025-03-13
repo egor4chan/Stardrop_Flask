@@ -1745,11 +1745,14 @@ footer {
 
 .promo-cloud {
     position: relative;
-    top: 146px;
     width: 90%;
     left: 5%;
     height: 50px;
 
+}
+#promoblock {
+    top: 146px;
+    transition: 0.3s;
 }
 
 .promo-cloud > input {
@@ -1783,5 +1786,4 @@ footer {
     font-weight: 600;
     transition: 0.3s;
     cursor: pointer;
-    color: black;
 }

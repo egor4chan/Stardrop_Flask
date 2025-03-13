@@ -18,6 +18,7 @@ function disable_btn() {
 }
 
 function check_promo() {
+    abort()
     var WebApp = window.Telegram.WebApp;
     var user_id = WebApp.initDataUnsafe.user.id;
 
