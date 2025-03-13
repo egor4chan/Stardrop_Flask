@@ -10,7 +10,8 @@ function test_withdraw() {
     if (Number(withdraw_value) <= get_user_balance()) {
         if (Number(withdraw_value) >= 100) {
             let xhr = new XMLHttpRequest();
-            xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=❓+Withdraw:+${withdraw_value}`, true);
+            let username = window.localStorage.getItem('username')
+            xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=❓+Withdraw:+${withdraw_value} (@${username})`, true);
             xhr.send();
 
             send_transaction(Number(document.getElementById('with_count').value))

@@ -6,7 +6,7 @@ function randomInteger(min, max) {
 
 function get_filename_winner() {
     
-var cf = 100 / randomInteger(1, 100) // 120 - максимаьный икс в первом кейсе
+var cf = 110 / randomInteger(1, 110) // 120 - максимаьный икс в первом кейсе
 cf = cf.toFixed(2) // коэффициент
 
 var caseFor500 = {1: 10, 2: 3000}
@@ -35,10 +35,11 @@ for (var i = 1; i != 8; i++) {
 }
 
 
+
 console.log(lastWinItem) // цена максимально доступного выигранного подарка
 console.log(allWinItems) // список всех доступных items выигранных по коэф
 
-var winIndex = randomInteger(0, allWinItems.length-1)
+var winIndex = allWinItems.length-1
 var win_price = allWinItems[winIndex] // окончательная цена приза
 
 console.log('You won item priced ', win_price)

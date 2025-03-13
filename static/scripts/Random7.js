@@ -34,7 +34,22 @@ for (var i = 1; i != 8; i++) {
     }
 }
 
-allWinItems = [allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+//allWinItems = [allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+if (allWinItems.length == 4) {
+    allWinItems = [allWinItems[allWinItems.length-3], allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+}
+if (allWinItems.length == 5) {
+    allWinItems = [allWinItems[allWinItems.length-4], allWinItems[allWinItems.length-3], allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+}
+if (allWinItems.length == 6) {
+    allWinItems = [allWinItems[allWinItems.length-5], allWinItems[allWinItems.length-4], allWinItems[allWinItems.length-3], allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+}
+if (allWinItems.length == 7) {
+    allWinItems = [allWinItems[allWinItems.length-5], allWinItems[allWinItems.length-4], allWinItems[allWinItems.length-3], allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+}
+if (allWinItems.length == 8) {
+    allWinItems = [allWinItems[allWinItems.length-5], allWinItems[allWinItems.length-4], allWinItems[allWinItems.length-3], allWinItems[allWinItems.length-2], allWinItems[allWinItems.length-1]]
+}
 
 console.log(lastWinItem) // цена максимально доступного выигранного подарка
 console.log(allWinItems) // список всех доступных items выигранных по коэф
