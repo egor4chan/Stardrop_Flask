@@ -1743,3 +1743,44 @@ footer {
     border-radius: 50%;
 }
 
+.promo-cloud {
+    position: relative;
+    top: 146px;
+    width: 90%;
+    left: 5%;
+    height: 50px;
+
+}
+
+.promo-cloud > input {
+    height: 100%;
+    width: 75%;
+    position: absolute;
+    left: 0;
+    border: none;
+    outline: none;
+    border-radius: 12px 0px 0px 12px;
+    background-color: rgb(20, 20, 22);
+    border-bottom: 3px solid rgb(11, 11, 12);
+    font-family: "Unbounded", monospace;
+    text-align: center;
+    font-weight: 600;
+    color: rgb(243, 186, 0);
+    text-transform: uppercase;
+}
+
+.promo-cloud > button {
+    height: 100%;
+    width: 25%;
+    position: absolute;
+    right: 0;
+    border: none;
+    outline: none;
+    border-radius: 0px 12px 12px 0px;
+    background-color: rgb(197, 151, 0);
+    border-bottom: 3px solid rgb(136, 85, 7);
+    font-family: "Unbounded", monospace;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}

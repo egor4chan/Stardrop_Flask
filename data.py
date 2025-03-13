@@ -223,11 +223,50 @@ class Draws:
             print(len(rows))
             return len(rows)
 
-payment = Payments()
-db = Data()
-draw = Draws()
+class Promocode:
 
-db.PrintAllData()
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+    ) 
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `promocode` (promo_code varchar(32), award varchar(32), user_id varchar(32))"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `promocode`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def CreatePromocode(self, promo_code, award, count, user_id=0):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"INSERT INTO `promocode` (promo_code, award, user_id) VALUES ({promo_code}, '{award}', '{user_id}');"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except:
+            return False
+
+payment = Payments()
+promo = Promocode()
+
+promo.PrintAllData()
 
 
 

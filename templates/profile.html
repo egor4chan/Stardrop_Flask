@@ -54,6 +54,11 @@
         <button id='deposit' onclick="deposit()">Пополнить</button>
     </div>
 
+    <div class="promo-cloud">
+        <input type="text" placeholder="ВВЕДИТЕ ПРОМОКОД" id="promoinput">
+        <button disabled="true" id="okbtn" onclick="check_promo()">ОК</button>
+    </div>
+
 
     <h2 id="trans-history">История транзакций</h2>
     <div class="list" id="list">
@@ -76,6 +81,7 @@
     <script src="static/data/Transactions.js"></script>
     <script src="static/data/Handler.js"></script>
     <script src="static/scripts/Telegram.js"></script>
+    <script src="static/scripts/Promo.js"></script>
     <script src="static/scripts/Stars.js"></script>
     <script src="static/scripts/Deposit.js"></script>
     <script src="static/scripts/Storage.js"></script>
