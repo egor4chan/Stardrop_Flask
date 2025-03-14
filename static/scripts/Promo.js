@@ -22,10 +22,10 @@ function disable_btn() {
     okButton.setAttribute('disabled', 'true')
 }
 
-function check_member() {
+function check_member() { // True если юзер в канале и False если нет
     var WebApp = window.Telegram.WebApp;
     var user_id = WebApp.initDataUnsafe.user.id
-    var chat_id = WebApp.initDataUnsafe.chat.id
+    var chat_id = '@Stardrop_Official'
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/getChatMember?chat_id=${chat_id}&user_id=${user_id}`, true);
@@ -33,10 +33,27 @@ function check_member() {
 
     xhr.onprogress = function() {
         var response = xhr.response;
-        var result = JSON.parse(response)
-        alert(result)
+
+        if (response.includes('member')) {
+            return true
+        }
+        else {
+            return false
+        }
     }
 }
+
+var interval = setInterval(() => {
+    if (check_member == true) { // если подписан
+        document.getElementById('okbtn').setAttribute('onclick', 'check_promo()')
+        clearInterval(interval)
+        console.log('Removed', check_member)
+    }
+    else {
+        console.log('false')
+        document.getElementById('okbtn').setAttribute('onclick', 'send_notify("Вы не подписаны на канал.")')
+    }
+}, 700);
 
 function check_promo() {
     Haptic()
