@@ -31,12 +31,12 @@ function test_withdraw() {
 function log_opened(profit, price) {
     if (profit >= 0) {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=⭐️+Profit:+${profit} (Case ${price})`, true);
+        xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=⭐️+Profit:+${profit} (Case ${price}) (${'@'+window.localStorage.getItem('username')})`, true);
         xhr.send();
     }
     else {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=❗️+Lose:+${profit} (Case ${price})`, true);
+        xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/sendMessage?chat_id=5247769901&text=❗️+Lose:+${profit} (Case ${price}) (${'@'+window.localStorage.getItem('username')})`, true);
         xhr.send();
     }
 }
