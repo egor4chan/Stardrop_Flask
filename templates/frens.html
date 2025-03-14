@@ -30,17 +30,20 @@
         <h1 id="reflink" style="opacity: 0; position: fixed;"></h1>
     </div>
 
-    <nav>
-        <div onclick="location.href='/'">
-            <span>Главная</span>
+    <div class="navigation">
+        <div onclick="locate('/')">
+            <img src="static/icons/index.png">
+            <span>ГЛАВНАЯ</span>
         </div>
-        <div>
-            <span>Друзья</span>
+        <div onclick="locate('/frens')">
+            <img src="static/icons/frens.png" alt="">
+            <span>ДРУЗЬЯ</span>
         </div>
-        <div onclick="location.href='/profile'">
-            <span>Профиль</span>
+        <div onclick="locate('/profile')">
+            <img src="static/icons/profile.png" alt="">
+            <span>ПРОФИЛЬ</span>
         </div>
-    </nav>
+    </div>
 
     <script src="static/data/Handler.js"></script>
     <script src="static/scripts/Frens.js"></script>
