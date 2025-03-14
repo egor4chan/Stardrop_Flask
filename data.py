@@ -52,6 +52,14 @@ class Data:
                 print(response['income'])
                 return response['income']
             
+    def GetTopIncome(self):
+        with self.connection.cursor() as cursor:
+            query = f"SELECT * FROM `data` ORDER BY income DESC LIMIT 3"
+            cursor.execute(query)
+
+            response = cursor.fetchall()
+            return response
+            
     def GetRefer(self, user_id):
         with self.connection.cursor() as cursor:
             select_all_rows = f"SELECT refer_id FROM `data` WHERE user_id = {user_id}"
@@ -158,6 +166,16 @@ class Payments:
             rows = cursor.fetchall()
             return len(rows)
         
+    def GetTotalDeposits(self, user_id):
+        total = 0
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT * FROM `pay` WHERE user_id = {user_id} AND type = 'deposit'"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for transaction in rows:
+                total += int(transaction['amount'])
+            return total
     
 class Draws:
 
@@ -365,17 +383,8 @@ class Promocode:
             self.connection.commit()
             self.connection.close()
 
-
+db = Data()
 payment = Payments()
 promo = Promocode()
-#promo.DeletePromousers()
-#print(promo.ActivatePromocode('STARDROP30', 11))
-#print(promo.ReturnAwardPromo('STARDROP30')) 
-#promo.UpdateActivations('STARDROP30', 500)
-promo.PrintPromousers()
-#promo.PrintAllData()
-#print(promo.ReturnPromoStatus('STARDROP30')) # --- кол-во активаций
 
-
-
-
+promo.CreatePromocode('RUSLAN', 5000, 2)
