@@ -477,7 +477,7 @@ span#pricecase {
     border-bottom: 3px solid rgb(172, 107, 10);
     font-family: "Unbounded", monospace;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 14px;
     cursor: pointer;
     color: white;
     justify-content: center;
@@ -993,18 +993,23 @@ h3#invited {
 }
 
 .notify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     transition: 0.5s;
-    width: calc(90% - 40px);
+    width: calc(70% - 40px);
     padding: 20px 20px;
     position: fixed;
     top: -80px; /* 20px */
-    left: 5%;
+    left: 15%;
     background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
     border-bottom: 3px solid rgb(172, 107, 10);
-    border-radius: 10px;
+    border-radius: 17px;
     z-index: 1000;
     color: white;
     font-weight: 500;
+    font-size: 14px;
 }
 
 body {
