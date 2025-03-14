@@ -28,6 +28,8 @@ function locate(src){
     location.href = src;
 }
 
+document.getElementById('tlink').setAttribute('onclick', 'locate("https://t.me/Stardrop_Official")')
+
 
 if (get_user_balance() == null) { // если пользователь не зарегистрирован
     set_user_balance()

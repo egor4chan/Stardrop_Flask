@@ -234,6 +234,36 @@ button.goto {
     top: 16px;
 }
 
+.telegram-link {
+    position: absolute;
+    font-size: 14px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: rgb(109, 109, 109);
+
+    border-radius: 10px;
+    right: 20px;
+    top: 16px;
+    animation: ss 3s infinite ease;
+}
+
+@keyframes ss {
+    from {
+        color: rgb(109, 109, 109);
+    }
+
+    50% {
+        color: rgb(196, 196, 196);
+    }
+
+    to {
+        color: rgb(109, 109, 109);
+    }
+}
+
 .balance {
     position: absolute;
     width: 100px auto;
