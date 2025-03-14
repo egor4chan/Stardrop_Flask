@@ -22,6 +22,8 @@ function disable_btn() {
     okButton.setAttribute('disabled', 'true')
 }
 
+var is_member = false
+
 function check_member() { // True если юзер в канале и False если нет
     var WebApp = window.Telegram.WebApp;
     var user_id = WebApp.initDataUnsafe.user.id
@@ -35,6 +37,7 @@ function check_member() { // True если юзер в канале и False е�
         var response = xhr.response;
 
         if (response.includes('member')) {
+            is_member = true
             return true
         }
         else {
@@ -48,6 +51,7 @@ function check_member() { // True если юзер в канале и False е�
 function check_promo() {
     Haptic()
     promo_back()
+    check_member()
 
     var WebApp = window.Telegram.WebApp;
     var user_id = WebApp.initDataUnsafe.user.id;
@@ -64,26 +68,30 @@ function check_promo() {
         httpRequest.onprogress = function() {
             var response = httpRequest.response;
             var result = JSON.parse(response)
-            
-            if (result == 'nopromo') {
-                send_notify('Такого промокода нет!')
-                promoInput.value = ''
-            }
-            if (result == 'activated') {
-                send_notify('Вы уже активировали этот промокод.')
-                promoInput.value = ''
-            }
-            if (result == 'notactive') {
-                send_notify('Промокод закончился :(')
-                promoInput.value = ''
-            }
-            else {
-                if (Number(result)) {
-                    get_transaction(Number(result))
-                    promo_activated()
-                    send_notify(`Промокод активирован!`)
+            if (is_member == true) {
+                if (result == 'nopromo') {
+                    send_notify('Такого промокода нет!')
                     promoInput.value = ''
                 }
+                if (result == 'activated') {
+                    send_notify('Вы уже активировали этот промокод.')
+                    promoInput.value = ''
+                }
+                if (result == 'notactive') {
+                    send_notify('Промокод закончился :(')
+                    promoInput.value = ''
+                }
+                else {
+                    if (Number(result)) {
+                        get_transaction(Number(result))
+                        promo_activated()
+                        send_notify(`Промокод активирован!`)
+                        promoInput.value = ''
+                    }
+                }
+            }
+            else {
+                send_notify('Подпишитесь на канал, чтобы ввести промокод.')
             }
         }
     }, 500);
