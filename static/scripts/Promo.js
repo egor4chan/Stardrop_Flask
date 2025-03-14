@@ -22,6 +22,22 @@ function disable_btn() {
     okButton.setAttribute('disabled', 'true')
 }
 
+function check_member() {
+    var WebApp = window.Telegram.WebApp;
+    var user_id = WebApp.initDataUnsafe.user.id
+    var chat_id = WebApp.initDataUnsafe.chat.id
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.telegram.org/bot8134219913:AAGg10uxflJSGxWe-oBqZ4Wd0o8nUm-CzbM/getChatMember?chat_id=${chat_id}&user_id=${user_id}`, true);
+    xhr.send();
+
+    xhr.onprogress = function() {
+        var response = xhr.response;
+        var result = JSON.parse(response)
+        alert(result)
+    }
+}
+
 function check_promo() {
     Haptic()
     promo_back()
