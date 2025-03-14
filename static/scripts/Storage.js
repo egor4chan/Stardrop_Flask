@@ -27,7 +27,7 @@ function locate(src){
     WebApp.HapticFeedback.impactOccurred('light')
     location.href = src;
 }
-
+set_html_user_balance()
 document.getElementById('tlink').setAttribute('onclick', 'locate("https://t.me/Stardrop_Official")')
 
 
@@ -37,4 +37,4 @@ if (get_user_balance() == null) { // если пользователь не за
 
 //set_user_balance(0)
 
-set_html_user_balance()
+
