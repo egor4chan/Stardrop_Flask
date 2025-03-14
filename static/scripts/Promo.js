@@ -92,6 +92,7 @@ function check_promo() {
             }
             else {
                 send_notify('Подпишитесь на канал, чтобы ввести промокод.')
+                promoInput.value = ''
             }
         }
     }, 500);
