@@ -387,4 +387,3 @@ db = Data()
 payment = Payments()
 promo = Promocode()
 
-promo.CreatePromocode('RUSLAN', 5000, 2)
