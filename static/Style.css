@@ -1874,17 +1874,18 @@ footer {
 
 .navigation {
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     width: 70%;
     left: 15%;
     height: 50px;
 
-    border-radius: 12px;
+    border-radius: 18px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 
-    box-shadow: 0px 0px 10px rgb(10, 10, 10);
+    box-shadow: 0px 0px 20px rgb(10, 10, 10);
+    border-bottom: 3px solid rgb(7, 7, 8);
     z-index: 100;
     background-color: rgb(12, 12, 14);
     padding-bottom: 15px;
@@ -1897,7 +1898,7 @@ footer {
     text-align: center;
     justify-content: center;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 18px;
     background-color: rgb(12, 12, 14);
     cursor: pointer;
 }

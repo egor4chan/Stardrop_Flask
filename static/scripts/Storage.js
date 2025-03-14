@@ -22,6 +22,12 @@ function get_transaction(value) { // зачислить д
     set_html_user_balance()
 }
 
+function locate(src){
+    var WebApp = window.Telegram.WebApp;
+    WebApp.HapticFeedback.impactOccurred('light')
+    location.href = src;
+}
+
 
 if (get_user_balance() == null) { // если пользователь не зарегистрирован
     set_user_balance()
