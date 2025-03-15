@@ -1,3 +1,6 @@
+var WebApp = window.Telegram.WebApp;
+var user_id = WebApp.initDataUnsafe.user.id;
+
 document.getElementById('spin').style.backgroundColor = 'rgb(27, 27, 27)';
 document.getElementById('spin').style.borderBottom = '3px solid rgb(17, 17, 17)';
 document.getElementById('spin').style.animation = 'none'
@@ -28,7 +31,7 @@ function minus_voucher() {
 function get_user_vouchers() {
     httpRequest = new XMLHttpRequest();
     httpRequest.open('POST', 'getvouchers');
-    var data = JSON.stringify({"user_id": 101});
+    var data = JSON.stringify({"user_id": user_id});
 
     httpRequest.send(data) 
  
