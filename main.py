@@ -172,15 +172,12 @@ def getVouchersCount():
 @app.route('/deletevoucher', methods=['POST'])
 def deleteVoucher():
     req = request.get_json(force=True, silent=True)
-    try:
-        user_id = int(req['user_id'])
-        vouchers = voucher.DeleteVoucher(user_id)
 
-        return [vouchers]
-    except Exception as error:
-        print(error)
-        return ['Error']
-    
+    user_id = int(req['user_id'])
+    vouchers = voucher.DeleteVoucher(user_id)
+
+    return [vouchers]
+
 @app.route('/getfriendscountandmembers', methods=['POST'])
 def getFriendsAndMembers():
     req = request.get_json(force=True, silent=True)
