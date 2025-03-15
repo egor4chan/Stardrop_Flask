@@ -46,7 +46,7 @@ function check_member() { // True если юзер в канале и False е�
     }
 }
 
-
+check_member()
 
 function check_promo() {
     Haptic()
