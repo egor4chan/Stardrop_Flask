@@ -1,4 +1,6 @@
 // FREE
+var WebApp = window.Telegram.WebApp;
+var user_id = WebApp.initDataUnsafe.user.id;
 
 var needs 
 
@@ -82,7 +84,7 @@ function spin() {
 
         httpRequest = new XMLHttpRequest();
         httpRequest.open('POST', 'deletevoucher');
-        var data = JSON.stringify({"user_id": 101});
+        var data = JSON.stringify({"user_id": user_id});
         httpRequest.send(data) 
 
         minus_voucher()
