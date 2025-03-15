@@ -161,6 +161,14 @@ class Payments:
             return ex
         
     def GetHistory(self, user_id):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
         with self.connection.cursor() as cursor:
             select_all_rows = f"SELECT * FROM `pay` WHERE user_id = {user_id}"
             cursor.execute(select_all_rows)
@@ -414,7 +422,8 @@ class Vouchers:
             db="default_db",
             port=3306,
             cursorclass=pymysql.cursors.DictCursor
-    ) 
+        ) 
+        print('CONNECTED')
         
     def CreateDataTable(self):
         with self.connection.cursor() as cursor:
@@ -448,6 +457,15 @@ class Vouchers:
             return False
         
     def DeleteVoucher(self, user_id):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+
         with self.connection.cursor() as cursor:
             select_all_rows = f"DELETE FROM `vouch` WHERE `user_id` = '{user_id}' LIMIT 1"
             cursor.execute(select_all_rows)
@@ -455,11 +473,29 @@ class Vouchers:
             self.connection.close()
             print(True)
 
-db = Data()
-payment = Payments()
-promo = Promocode()
+    def GetVouchCount(self, user_id):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT user_id FROM `vouch` WHERE user_id = {user_id}"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            print(len(rows))
+            return len(rows)
+
+#db = Data()
+#payment = Payments()
+#promo = Promocode()
 vouch = Vouchers()
 
-#vouch.AddVoucher(101)
+vouch.AddVoucher(101)
 #vouch.DeleteVoucher(101)
 #vouch.PrintAllData()
