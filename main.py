@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 from telegram import Bot
 import requests
 
-from data import Data, Payments, Draws, Promocode
+from data import Data, Payments, Draws, Promocode, Vouchers
 
 
 app = Flask(__name__)
@@ -10,6 +10,7 @@ db = Data()
 pay = Payments()
 draws = Draws()
 promo = Promocode()
+voucher = Vouchers()
 
 TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
 API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
@@ -65,6 +66,11 @@ def case_3():
 @app.route('/case4')
 def case_4():
     return render_template('case4.html')
+
+@app.route('/freecase')
+def freecase():
+    return render_template('freecase.html')
+
 
 # DRAWS
 @app.route('/draw')
@@ -132,6 +138,7 @@ def auth_user():
         refer_id = int(req['refer_id'])
         
         db.Auth(user_id, refer_id)
+        voucher.AddVoucher(refer_id)
         return 'True'
     except:
         user_id = int(req['user_id'])

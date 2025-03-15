@@ -127,6 +127,16 @@ class Payments:
             cursor.execute(create_table_query)
             print('Success')
 
+    def SetSuccessPayment(self, payment_id):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"UPDATE `pay` SET status = '0' WHERE `payment_id` = '{payment_id}'"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except Exception as ex:
+            return ex
+
     def PrintAllData(self):
         with self.connection.cursor() as cursor:
             print("-" * 20)
@@ -284,6 +294,8 @@ class Promocode:
             print(ex)
             return False
         
+
+
     def ReturnPromoStatus(self, promo_code): # есть ли такой промо и сколько активаций
         with self.connection.cursor() as cursor:
             try: 
@@ -323,6 +335,15 @@ class Promocode:
         else:
             pass
             # удалить промо
+
+    def DeletePromo(self, promo_code):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"DELETE FROM `promos` WHERE `promo_code` = '{promo_code}'"
+            cursor.execute(select_all_rows)
+            self.connection.commit()
+            self.connection.close()
+            print(True)
+            
     
     def ReturnAwardPromo(self, promo_code):
         with self.connection.cursor() as cursor:
@@ -383,7 +404,62 @@ class Promocode:
             self.connection.commit()
             self.connection.close()
 
+class Vouchers:
+
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+    ) 
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `vouch` (user_id varchar(32), voucher_id varchar(32))"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `vouch`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def AddVoucher(self, user_id):
+        try:
+            with self.connection.cursor() as cursor:
+   
+                insert_query = f"INSERT INTO `vouch` (user_id, voucher_id) VALUES ('{user_id}', '1');"
+                cursor.execute(insert_query)
+                    
+                self.connection.commit()
+                return True
+        except Exception as ex:
+            print(ex)
+            return False
+        
+    def DeleteVoucher(self, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"DELETE FROM `vouch` WHERE `user_id` = '{user_id}' LIMIT 1"
+            cursor.execute(select_all_rows)
+            self.connection.commit()
+            self.connection.close()
+            print(True)
+
 db = Data()
 payment = Payments()
 promo = Promocode()
+vouch = Vouchers()
 
+#vouch.AddVoucher(101)
+#vouch.DeleteVoucher(101)
+#vouch.PrintAllData()

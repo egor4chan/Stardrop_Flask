@@ -15,7 +15,7 @@ async def successful_payment(message: Message):
         ])
         return result
 
-    await message.answer('👋🏻 <b>Привет!</b>\n\nИспытывайте удачу и ухватите шанс получить редкий подарок за низкую плату!', parse_mode='html', reply_markup=markup())
+    await message.answer('👋🏻 <b>Привет!</b>\n\nИспытывайте удачу и ухватите шанс получить редкий подарок за низкую плату.', parse_mode='html', reply_markup=markup())
     
 
 @dp.pre_checkout_query(lambda query: True)
