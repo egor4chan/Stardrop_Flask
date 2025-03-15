@@ -492,10 +492,9 @@ class Vouchers:
             return len(rows)
 
 #db = Data()
+#db.DeleteUser(7046463300)
 #payment = Payments()
 #promo = Promocode()
-vouch = Vouchers()
 
-vouch.AddVoucher(101)
 #vouch.DeleteVoucher(101)
 #vouch.PrintAllData()
