@@ -78,7 +78,14 @@ function get_values(win) {
 function spin() {
     var case_price = 0
 
-    if (get_user_balance() >= case_price) { // если денег хватает
+    if (Number(document.getElementById('free-try').innerHTML) > 0) { // если денег хватает
+
+        httpRequest = new XMLHttpRequest();
+        httpRequest.open('POST', 'deletevoucher');
+        var data = JSON.stringify({"user_id": 101});
+        httpRequest.send(data) 
+
+        minus_voucher()
         send_transaction(case_price)
 
         var win_price = session[1]
@@ -98,6 +105,7 @@ function spin() {
         wheel.style.animation = 'spin 10s ease forwards'
 
         setTimeout(() => {
+            
             spinButton.setAttribute('onclick', `sell_gift(0, ${win_price})`)
             spinButton.removeAttribute('disabled');
             document.getElementById('cursor').style.opacity = 0
@@ -113,7 +121,8 @@ function spin() {
     }
 
     else {
-        generate_payload(needs, 75)
+        var spinButton = document.getElementById('spin')
+        spinButton.setAttribute('onclick', 'locate("/frens")')
     }
 }
 
@@ -129,4 +138,3 @@ function set_values() {
 }
 
 set_values()
-button_get_deposit(0)

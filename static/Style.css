@@ -1536,6 +1536,20 @@ footer {
     animation: none;
 }
 
+.freeCase {
+    background: linear-gradient(70deg, rgb(223, 93, 235), rgb(238, 39, 66));
+}
+
+.freeCase > #name{
+    color: black;
+}
+
+.freeCase > #goToCase {
+    background-color: rgb(14, 14, 15);
+    border-bottom: 3px solid rgb(12, 12, 12);
+    animation: none;
+}
+
 .codeBlue {
     background: linear-gradient(70deg, rgb(9, 131, 230), rgb(16, 101, 228));
 }
@@ -1953,4 +1967,16 @@ footer {
     color: rgb(175, 175, 175);
     font-size: 10px;
     font-weight: 600;
+}
+
+.freetry {
+    width: 100px;
+    height: 30px;
+    color: rgb(161, 161, 161);
+    padding: 5px 10px;
+    position: relative;
+    top: -90px;
+    font-size: 12px;
+    border-radius: 10px;
+    background-color: rgb(22, 22, 22);
 }

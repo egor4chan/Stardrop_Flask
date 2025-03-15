@@ -78,13 +78,13 @@ if (win_price == 150) {
     fileName = '5.png'
 }
 if (win_price == 200) {
-    fileName = '6.png'
+    fileName = '8.png'
 }
 if (win_price == 250) {
     fileName = '7.png'
 }
 if (win_price == 500) {
-    fileName = '8.png'
+    fileName = '6.png'
 }
 
 
