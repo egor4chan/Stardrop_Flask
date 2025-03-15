@@ -57,6 +57,8 @@ function check_promo() {
     var user_id = WebApp.initDataUnsafe.user.id;
 
     disable_btn()
+
+    if (is_member == true) {
     setTimeout(() => {
         let promo_code = promoInput.value;
         httpRequest = new XMLHttpRequest();
@@ -68,7 +70,7 @@ function check_promo() {
         httpRequest.onprogress = function() {
             var response = httpRequest.response;
             var result = JSON.parse(response)
-            if (is_member == true) {
+            
                 if (result == 'nopromo') {
                     send_notify('Такого промокода нет!')
                     promoInput.value = ''
@@ -89,11 +91,13 @@ function check_promo() {
                         promoInput.value = ''
                     }
                 }
-            }
-            else {
-                send_notify('Подпишитесь на канал, чтобы ввести промокод.')
-                promoInput.value = ''
-            }
+        
+    
         }
     }, 500);
+    }
+    else {
+        send_notify(`Подпишитесь на нас, чтобы вводить промокоды.`)
+        promoInput.value = ''
+    }
 }
