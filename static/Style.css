@@ -1536,6 +1536,17 @@ footer {
     animation: none;
 }
 
+.silverado {
+    background: linear-gradient(70deg, rgb(223, 221, 223), rgb(172, 183, 192));
+}
+
+.silverado > #goToCase {
+    background-color: rgb(236, 236, 236);
+    border-bottom: 3px solid rgb(204, 204, 204);
+    animation: none;
+    color: black;
+}
+
 .freeCase {
     background: linear-gradient(70deg, rgb(223, 93, 235), rgb(238, 39, 66));
 }
