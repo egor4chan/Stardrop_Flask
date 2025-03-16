@@ -76,7 +76,7 @@ function get_values(win) {
 
 
 function spin() {
-    var case_price = 75
+    var case_price = 750
 
     if (get_user_balance() >= case_price) { // если денег хватает
         send_transaction(case_price)
