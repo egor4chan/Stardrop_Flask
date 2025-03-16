@@ -38,6 +38,11 @@ def profile():
     return render_template('profile.html')
 
 # CASES
+@app.route('/case8')
+def case_8():
+    return render_template('case8.html')
+
+
 @app.route('/case6')
 def case_6():
     return render_template('case6.html')

@@ -494,7 +494,6 @@ class Vouchers:
 #db = Data()
 #db.DeleteUser(7046463300)
 #payment = Payments()
-#promo = Promocode()
-
-#vouch.DeleteVoucher(101)
-#vouch.PrintAllData()
+promo = Promocode()
+promo.CreatePromocode('A', 10000, 1)
+#promo.PrintAllData()
