@@ -297,6 +297,7 @@ class Promocode:
                 cursor.execute(insert_query)
                     
                 self.connection.commit()
+                print('Success')
                 return True
         except Exception as ex:
             print(ex)
@@ -492,3 +493,9 @@ class Vouchers:
             return len(rows)
 
 #db = Data()
+#db.DeleteUser(7046463300)
+#payment = Payments()
+promo = Promocode()
+#promo.CreatePromocode('INVITE', 25, 250)
+promo.PrintAllData()
+print(promo.ReturnAwardPromo('INVITE'))
