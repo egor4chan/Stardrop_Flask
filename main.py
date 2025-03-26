@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 from telegram import Bot
 import requests
 
-from data import Data, Payments, Draws, Promocode, Vouchers
+from data import Data, Payments, Draws, Promocode, Vouchers, Give, FastPayments, FastMembers
 
 
 app = Flask(__name__)
@@ -11,6 +11,9 @@ pay = Payments()
 draws = Draws()
 promo = Promocode()
 voucher = Vouchers()
+g = Give()
+fast = FastPayments()
+members = FastMembers()
 
 TELEGRAM_TOKEN = "7662681489:AAHdPwn1v9nQxPvxp8lVutN7S_C5wPDUgEk"
 API_URL = f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/'
@@ -82,15 +85,77 @@ def freecase():
 def draw():
     return render_template('draw.html')
 
+@app.route('/drawpep')
+def drawpep():
+    return render_template('drawpep.html')
+
 
 # CRASH
 @app.route('/crash')
 def crash():
     return render_template('crash.html')
 
+@app.route('/mines')
+def mines():
+    return render_template('mines.html')
 
+@app.route('/tickets')
+def tickets():
+    return render_template('tickets.html')
+
+@app.route('/gives')
+def gives():
+    return render_template('gives.html')
+
+@app.route('/give')
+def give():
+    return render_template('give.html')
+
+# FAST DEPOSIT 
+@app.route('/fastdeposit', methods=['POST'])
+def fastDeposit():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        amount = req['amount']
+
+        fast.AddPayment(user_id, amount)
+
+        return ['True']
+    except Exception as error:
+        print(error)
+        return ['Error']
+    
+@app.route('/takepartfast', methods=['POST'])
+def takePartFast():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+
+        members.SetMember(user_id)
+
+        return ['True']
+    except Exception as error:
+        print(error)
+        return ['Error']
+
+@app.route('/getfastdeposits', methods=['POST'])
+def getFastDeposits():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+
+        totalPayments = fast.ReturnTotalPayments(user_id)
+        membersTotal = members.ReturnMembersCount()
+
+        return [totalPayments, membersTotal]
+    
+    except Exception as error:
+        print(error)
+        return ['Error']
 
 # STARS
+
 def generate_invoice(price):
     title = "Deposit"
     description = "Instant stars deposit."
@@ -287,6 +352,35 @@ def checkPromo():
     except Exception as error:
         print(error)
         return 'False'
+
+@app.route('/give_info', methods=['POST'])
+def giveInfo():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        prize = req['prize']
+        
+        status = g.ReturnInfo(user_id, prize)
+
+        print(status)
+        return status
+        
+
+    except Exception as error:
+        print(error)
+        return 'False'
+    
+@app.route('/give_buy', methods=['POST'])
+def giveBuyTicket():
+    req = request.get_json(force=True, silent=True)
+    try:
+        user_id = int(req['user_id'])
+        prize = req['prize']
+        
+        status = g.BuyTicket(user_id, prize)
+        return True
+    except:
+        return False
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')

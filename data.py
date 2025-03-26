@@ -25,10 +25,13 @@ class Data:
             select_all_rows = "SELECT * FROM `data`"
             cursor.execute(select_all_rows)
 
+            count = 0
             rows = cursor.fetchall()
             for row in rows:
                 print(row)
+                count += 1
             print("-" * 20)
+            print('Players: ', count)
 
     def Auth(self, user_id, refer_id, income=0):
         try:
@@ -49,15 +52,21 @@ class Data:
             if response == None:
                 return False
             else:
-                print(response['income'])
                 return response['income']
             
+    def Settings(self):
+        with self.connection.cursor() as cursor:
+            query = 'ALTER TABLE `data` CHANGE `income` `income` INT(32) NULL DEFAULT NULL'
+            cursor.execute(query)
+            response = cursor.fetchall()
+
     def GetTopIncome(self):
         with self.connection.cursor() as cursor:
-            query = f"SELECT * FROM `data` ORDER BY income DESC LIMIT 3"
+            query = f"SELECT * FROM `data` ORDER BY income DESC LIMIT 10"
             cursor.execute(query)
 
             response = cursor.fetchall()
+            print(response)
             return response
             
     def GetRefer(self, user_id):
@@ -65,7 +74,7 @@ class Data:
             select_all_rows = f"SELECT refer_id FROM `data` WHERE user_id = {user_id}"
             cursor.execute(select_all_rows)
 
-            rows = cursor.fetchone()
+            rows = cursor.fetchall()
             print((rows['refer_id']))
             return rows['refer_id']
         
@@ -89,6 +98,16 @@ class Data:
         except:
             return False
         
+    def SetIncome(self, user_id, prize):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"UPDATE `data` SET income = {prize} WHERE user_id = {user_id}"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except:
+            return False
+        
     def DeleteUser(self, user_id):
         with self.connection.cursor() as cursor:
             select_all_rows = f"DELETE FROM `data` WHERE user_id = {user_id}"
@@ -96,6 +115,8 @@ class Data:
             self.connection.commit()
             self.connection.close()
             print(True)
+
+
             
         
 
@@ -195,6 +216,71 @@ class Payments:
                 total += int(transaction['amount'])
             return total
     
+class FastPayments:
+
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+    ) 
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `fast` (user_id varchar(32), amount varchar(32))"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def AddPayment(self, user_id, amount):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"INSERT INTO `fast` (user_id, amount) VALUES ({user_id}, {amount});"
+                cursor.execute(insert_query)
+                self.connection.commit()
+                return True
+        except Exception as ex:
+            return ex
+        
+    def ReturnTotalPayments(self, user_id):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT amount FROM `fast` WHERE user_id = {user_id}"
+            cursor.execute(select_all_rows)
+
+            sum = cursor.fetchall()
+            total = 0
+
+            for deposit in sum:
+                total += int(deposit['amount'])
+            
+            return total
+                
+
+            
+        
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `fast`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
 class Draws:
 
     def __init__(self):
@@ -492,10 +578,180 @@ class Vouchers:
             print(len(rows))
             return len(rows)
 
-#db = Data()
-#db.DeleteUser(7046463300)
-#payment = Payments()
-promo = Promocode()
-#promo.CreatePromocode('INVITE', 25, 250)
-promo.PrintAllData()
-print(promo.ReturnAwardPromo('INVITE'))
+class Give:
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+        print('CONNECTED')
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `give` (user_id varchar(32), prize varchar(32))"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `give`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def ReturnBank(self, prize):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT user_id FROM `give` WHERE prize = {prize}"
+            cursor.execute(select_all_rows)
+            rows = cursor.fetchall()
+            return len(rows) * 10 # для лолипопа (по ставке 10)
+
+    def BuyTicket(self, user_id, prize):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"INSERT INTO `give` (user_id, prize) VALUES ('{user_id}', '{prize}');"
+                cursor.execute(insert_query)
+                    
+                self.connection.commit()
+                
+                if self.ReturnBank(prize) >= 250:
+                    self.ClearTickets(prize)
+                return True
+        except Exception as ex:
+            print(ex)
+            return False
+        
+        # СДЕЛАТЬ ПРОВЕРКУ
+        # if (сумма ставок == 250) тогда clear игру и выдать приз
+        
+        
+    def ClearTickets(self, prize):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"DELETE FROM `give` WHERE `prize` = '{prize}' "
+            cursor.execute(select_all_rows)
+            self.connection.commit()
+            self.connection.close()
+            print(True)
+
+    def ReturnInfo(self, user_id, prize):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+
+        info = list()
+
+        with self.connection.cursor() as cursor:
+            # сколько билетов купил user_id
+            select_all_rows = f"SELECT user_id FROM `give` WHERE user_id = {user_id} AND prize = {prize}"
+            cursor.execute(select_all_rows)
+            rows = cursor.fetchall()
+            info.append(len(rows))
+
+            # общий банк
+            select_all_rows = f"SELECT user_id FROM `give` WHERE prize = {prize}"
+            cursor.execute(select_all_rows)
+            rows = cursor.fetchall()
+            info.append(len(rows))
+
+            # кол-во участников
+            select_all_rows = f"SELECT DISTINCT user_id FROM `give` WHERE prize = {prize}"
+            cursor.execute(select_all_rows)
+            rows = cursor.fetchall()
+            info.append(len(rows))
+        
+        return info
+        
+class FastMembers:
+    def __init__(self):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+        print('CONNECTED')
+        
+    def CreateDataTable(self):
+        with self.connection.cursor() as cursor:
+            create_table_query = "CREATE TABLE `fastmembers` (user_id varchar(32) UNIQUE)"
+
+            cursor.execute(create_table_query)
+            print('Success')
+
+    def PrintAllData(self):
+        with self.connection.cursor() as cursor:
+            print("-" * 20)
+            select_all_rows = "SELECT * FROM `fastmembers`"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+            for row in rows:
+                print(row)
+            print("-" * 20)
+
+    def ReturnMembersCount(self):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT user_id FROM `fastmembers`"
+            cursor.execute(select_all_rows)
+            rows = cursor.fetchall()
+            return len(rows) 
+
+    def SetMember(self, user_id):
+        self.connection = pymysql.connect(
+            host="217.25.89.35",
+            user="gen_user",
+            passwd="Y=44sQFr0U}Tz{",
+            db="default_db",
+            port=3306,
+            cursorclass=pymysql.cursors.DictCursor
+        ) 
+
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"INSERT INTO `fastmembers` (user_id) VALUES ('{user_id}');"
+                cursor.execute(insert_query)
+                    
+                self.connection.commit()
+        except Exception as ex:
+            print(ex)
+            return False
+
+fast = FastPayments()
+members = FastMembers()
+fast.AddPayment(3, 100)
+
+
+members.PrintAllData()
