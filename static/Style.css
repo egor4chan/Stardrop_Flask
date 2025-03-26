@@ -1072,6 +1072,8 @@ body {
     }
 }
 
+
+
 .promo {
     width: calc(90% - 50px);
     padding: 10px 25px;
@@ -1159,6 +1161,21 @@ body {
     font-size: 14px;
     border-bottom: 2px solid rgb(10, 10, 10);
 }
+
+#labelbig3 {
+    position: relative;
+    top: 100px;
+    left: 5%;
+    padding: 5px 10px;
+    background-color: rgb(20, 20, 22);
+    color: rgb(177, 177, 177);
+    width: 52px;
+    border-radius: 10px;
+    font-size: 14px;
+    border-bottom: 2px solid rgb(10, 10, 10);
+}
+
+.draw
 
 .auctions {
     position: relative;
@@ -1642,6 +1659,7 @@ footer {
     background: linear-gradient(70deg, rgb(161, 235, 231), rgb(234, 152, 255));
     top: 120px;
     border-radius: 12px;
+    margin-top: 0px;
 }
 
 .draw2 {
@@ -1990,4 +2008,634 @@ footer {
     font-size: 12px;
     border-radius: 10px;
     background-color: rgb(22, 22, 22);
+}
+
+.mines {
+    left: 10%;
+    position: relative;
+    
+    width: 80%;
+    height: same-as-width;
+    top: 80px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+
+    border-radius: 12px;
+    background: rgb(12, 12, 14);
+    
+}
+
+.mines > div {
+    margin: 3px;
+    position: relative;
+    top: 5px;
+    margin-top: -1px;
+    aspect-ratio: 1;
+    width: calc(18% - 1px);
+    height: calc(18% - 3px);
+    background: rgb(253, 186, 1);
+    border-bottom: 3px solid rgb(224, 146, 0);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#playmines {
+    width: 90%;
+    left: 5%;
+    position: relative;
+    height: 60px;
+    border-radius: 12px;
+    top: 100px;
+    font-family: "Unbounded", monospace;
+
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    /* background: linear-gradient(45deg, rgb(197, 151, 0), rgb(196, 104, 0));
+    border-bottom: 3px solid rgb(199, 106, 0); */
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
+    border-bottom: 3px solid rgb(172, 107, 10);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    font-size: 16px;
+    transition: 0.3s;
+
+}
+
+#inputs {
+    width: 90%;
+    left: 5%;
+    position: relative;
+    height: 60px;
+    border-radius: 12px;
+    top: 118px;
+    font-family: "Unbounded", monospace;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+#inputs > input {
+    font-family: "Unbounded", monospace;
+    height: 100%;
+    position: relative;
+    width: calc(48% - 80px);
+    cursor: pointer;
+    padding: 0px 40px;
+    outline: none;
+    border: none;
+    background-color: rgb(27, 27, 29);
+    color: white;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    user-select: none;
+    scale: 1;
+}
+
+#labels {
+    width: 90%;
+    left: 5%;
+    position: relative;
+    height: 20px;
+    border-radius: 12px;
+    top: 118px;
+    font-family: "Unbounded", monospace;
+    outline: none;
+    display: flex;
+    text-align: left;
+}
+
+#labels > span {
+    color: grey;
+    font-size: 12px;
+    width:calc(48%);
+
+    position: absolute;
+}
+
+#labels > span#s {
+    left: 52%;
+}
+
+#newstar {
+    margin-top: 4px;
+    animation: spawn-star 0.3s forwards ease;
+    opacity: 0;
+}
+
+#newstar > img {
+    width: 80%;
+}
+
+@keyframes spawn-star {
+    from {
+        opacity: 0;
+        scale: 1;
+    }
+
+    30% {
+        scale: 0.8;
+    }
+
+    80% {
+        scale: 1.3;
+    }
+
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.boxes {
+    position: relative;
+    top: 80px;
+    height: 300px;
+    width: 90%;
+    left: 5%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.boxes > div {
+    width: 32%;
+    height: 90px;
+    background-color: aliceblue;
+    border-radius: 12px;
+    border-bottom: 3px solid red;
+    cursor: pointer;
+    background: rgb(253, 186, 1);
+    border-bottom: 3px solid rgb(224, 146, 0);
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+    font-size: 30px;
+    color: rgb(185, 142, 0);
+    font-weight: 600;
+    scale: 1;
+
+    transition: 0.3s;
+}
+
+@keyframes checks {
+
+    from {
+        scale: 1;
+    }
+
+    30%{
+        scale: 1.05;
+    }
+
+    70% {
+        scale: 0.95;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+#starr {
+    opacity: 0.5;
+}
+
+
+
+
+
+.pagename {
+    color: rgb(201, 201, 201);
+    position: relative;
+    width: 90%;
+    top: 60px;
+    left: 5%;
+    font-size: 20px;
+}
+
+.gives-list {
+    position: relative;
+    width: 90%;
+    height: auto;
+    left: 5%;
+    top: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.gives-list > div {
+    width: 48%;
+    padding-bottom: 30px;
+    background: rgb(12, 12, 14);
+    border-radius: 12px;
+    margin-top: 10px;
+    aspect-ratio: 1;
+    position: relative;
+    box-shadow: 0px 0px 20px rgb(7, 7, 7);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gives-list > div:hover {
+    scale: 1.05;
+}
+
+.gives-list > div > .progress {
+    position: absolute;
+    height: 30px;
+    width: 90%;
+    left: 5%;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    top: calc(100% - 40px);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.gives-list > div > img {
+    width: 70%;
+    position: relative;
+    left: 15%;
+    top: 15px
+}
+
+#give1 {
+    background: linear-gradient(45deg, rgb(212, 102, 28), rgb(236, 185, 16));
+    border-bottom: 3px solid rgb(212, 102, 28)
+}
+
+#give2 {
+    background: linear-gradient(45deg, rgb(28, 144, 212), rgb(127, 192, 201));
+    border-bottom: 3px solid rgb(28, 144, 212);
+}
+
+#give3 {
+    background: linear-gradient(45deg, rgb(44, 196, 24), rgb(236, 185, 16));
+    border-bottom: 3px solid rgb(44, 196, 24)
+}
+
+#give4 {
+    background: linear-gradient(45deg, rgb(202, 0, 0), rgb(255, 86, 86));
+    border-bottom: 3px solid rgb(202, 0, 0)
+}
+
+.back {
+    position: absolute;
+    height: 30px;
+    width: 90%;
+    left: 5%;
+    border-radius: 10px;
+    background: rgb(6, 6, 5);
+    opacity: 0.3;
+
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    top: calc(100% - 40px);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.gift-image {
+    width: 80%;
+    left: 10%;
+    text-align: center;
+    height: 200px;
+    position: relative;
+    top: 80px;
+}
+
+.gift-image > img {
+    height: 80%;
+}
+
+.givebet {
+    position: relative;
+    border: none;
+    top: 116px;
+    width: 90%;
+    left: 5%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: "Unbounded", monospace;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, rgb(255, 196, 0), rgb(255, 136, 0));
+    border-bottom: 3px solid rgb(255, 136, 0);
+
+    animation: drug 5s infinite ease;
+    transition: 0.3s;
+}
+
+.givebet:hover {
+    scale: 1.05;
+}
+
+.give-price {
+    width: 90%;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+    left: 5%;
+    top: 70px;
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.progressgift {
+    width: 90%;
+    left: 5%;
+    height: 30px;
+    border-radius: 5px;
+    background: rgb(6, 6, 5);
+    position: relative;
+    top: 90px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cursorgift {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(180, 212, 47), rgb(108, 145, 11));
+    border-radius: 5px;
+    width: 0%;
+    transition: 0.3s;
+}
+
+.members-pool {
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.members-gift {
+    width: 90%;
+    height: 100px;
+    position: relative;
+    top: 150px;
+    left: 5%;
+}
+
+.members-gift > div {
+    height: 70px;
+    width: 100%;
+    margin-top: 10px;
+    color: white;
+    background: rgb(29, 29, 29);
+    border-radius: 12px;
+    border-bottom: 3px solid rgb(7, 7, 7);
+}
+
+.members-gift > div > span {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-weight: 600;
+}
+
+#username-gift {
+    left: 20px;
+    margin-top: 9px;
+    color: rgb(241, 241, 241);
+}
+
+#userbet-gift {
+    right: 20px;
+    margin-top: 7px;
+}
+
+#chance-gift {
+    right: 20px;
+    color: rgb(201, 201, 201);
+    bottom: 44px;
+}
+
+#chance-gift-label {
+    left: 20px;
+    font-size: 14px;
+    color: rgb(201, 201, 201);
+    bottom: 44px;
+}
+
+
+
+.members-count-gift {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    left: 4%;
+    color: rgb(170, 170, 170);
+    font-size: 12px;
+    text-align: center;
+    top: 76px;
+}
+
+#tiktok-banner {
+    width: 90%;
+    position: relative;
+    height: 60px;
+    background: linear-gradient(45deg, rgb(17, 17, 17), rgb(50, 19, 54));
+    top: 80px;
+    left: 5%;
+    border-radius: 12px;
+    
+}
+
+.pic {
+    position: relative;
+    left: 5%;
+    top: 200px;
+    width: 90%;
+    height: 200px;
+    text-align: center;
+}
+
+.pic > h1 {
+    color: rgb(255, 196, 0);
+    position: relative;
+    top: -63px;
+    font-size: 80px;
+    left: 20px;
+}
+
+.pic > h2 {
+    color: white;
+}
+
+.casePepe > img {
+    transition: 0.1s;
+}
+
+
+
+.banner-draw {
+    transition: 0.3s;
+    width: 90%;
+    left: 5%;
+    position: relative;
+    background: linear-gradient(45deg, rgb(105, 194, 54), rgb(36, 148, 36));
+    height: 100px;
+    top: 70px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    border-bottom: 3px solid rgb(71, 100, 0);
+    cursor: pointer;
+}
+
+.banner-draw:hover {
+    scale: 1.02;
+}
+
+.banner-draw > span#name {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    font-weight: 600;
+    color: rgb(233, 232, 204);
+
+}
+
+.banner-draw > img {
+    position: absolute;
+    right: -20px;
+    bottom: 0px;
+    height: 90%;
+}
+
+.banner-draw > span#prize {
+    position: absolute;
+    font-weight: 700;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    bottom: 12px;
+    left: 20px;
+    font-size: 32px;
+    color: white;
+}
+
+@keyframes scalable {
+    from {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.02;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+.pepbtn {
+    background: linear-gradient(45deg, rgb(180, 212, 47), rgb(108, 145, 11));
+    border-bottom: 3px solid rgb(71, 100, 0);
+    animation: none;
+    opacity: 0.7;
+
+    /* background: linear-gradient(45deg, rgb(105, 194, 54), rgb(36, 148, 36)); */
+}
+
+.faq {
+    position: relative;
+    width: calc(90% - 40px);
+    left: 5%;
+    height: 80px auto;
+    border-radius: 12px;
+    border: 1px solid rgb(108, 145, 11);
+    top: 140px;
+    color: rgb(180, 212, 47);
+    padding: 10px 20px 16px 20px;
+}
+
+.faq > span {
+    position: relative;
+    font-size: 12px;
+    width: 40%;
+}
+
+.faq > span > svg {
+    position: relative;
+    top: 5px;
+}
+
+.mydep {
+    border-radius: 12px;
+    left: 5%;
+    width: 90%;
+    height: 50px;
+    position: relative;
+    top: 160px;
+    background-color: rgb(32, 32, 32);
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    background: linear-gradient(45deg, rgb(180, 212, 47), rgb(108, 145, 11));
+    border-bottom: 3px solid rgb(71, 100, 0);
+}
+
+
+.mydep > span {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+}
+
+.mydep > span.alt {
+    position: absolute;
+    left: 20px;
+}
+.mydep > span.dep24 {
+    position: absolute;
+    right: 20px;
 }
