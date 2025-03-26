@@ -1,3 +1,13 @@
+function fast_deposit(amount) {
+  var WebApp = window.Telegram.WebApp;
+  var user_id = WebApp.initDataUnsafe.user.id // user id
+  
+  httpRequest = new XMLHttpRequest();
+  httpRequest.open('POST', 'fastdeposit');
+  var data = JSON.stringify({"user_id": user_id, "amount": amount});
+  httpRequest.send(data);
+}
+
 function generate_payload(price, priceforcase=0) {
     try {
         const httpRequest = new XMLHttpRequest();
@@ -13,11 +23,14 @@ function generate_payload(price, priceforcase=0) {
                 if (status === 'paid') {
                   
                   send_notify('Успешное пополнение!')
+
                   if (priceforcase==0) {
                     get_transaction(Number(document.getElementById('dep_count').value))
+                    fast_deposit(Number(document.getElementById('dep_count').value))
                   }
                   else {
                     get_transaction(Number(price))
+                    fast_deposit(Number(price))
                   }
                   abort()
 
