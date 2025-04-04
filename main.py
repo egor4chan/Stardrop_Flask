@@ -3,7 +3,7 @@ from telegram import Bot
 import requests
 
 from data import Data, Payments, Draws, Promocode, Vouchers, Give, FastPayments, FastMembers
-
+#asfd
 
 app = Flask(__name__)
 db = Data()
